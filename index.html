@@ -137,6 +137,17 @@
   .focus-card h3{font-family:var(--serif); font-size:19px; margin:0 0 8px;}
   .focus-card p{font-size:15.5px; color:var(--slate); margin:0;}
 
+  .principle{
+    margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;
+  }
+  .principle__mark{
+    font-family:var(--mono); font-weight:700; font-size:21px; letter-spacing:0.01em;
+    color:var(--ink); margin:0; white-space:nowrap;
+  }
+  .principle__mark span{color:var(--teal);}
+  .principle p{font-family:var(--serif); color:var(--slate); margin:0; font-size:15.5px;}
+
   /* ROADMAP */
   .phase{margin-bottom:38px;}
   .phase:last-child{margin-bottom:0;}
@@ -164,7 +175,9 @@
   .project-card{
     border:1px dashed var(--slate); padding:20px; background:var(--paper-dim);
   }
+  .project-card--live{border-style:solid; border-color:var(--teal);}
   .project-card__tag{font-family:var(--mono); font-size:11px; color:var(--amber); margin:0 0 10px;}
+  .project-card__tag--live{color:var(--teal);}
   .project-card h3{font-size:16.5px; margin:0 0 8px; font-family:var(--serif);}
   .project-card p{font-size:14.5px; color:var(--slate); margin:0 0 12px;}
   .project-card a{font-family:var(--mono); font-size:13px;}
@@ -211,7 +224,7 @@
         <p class="eyebrow">// PERFIL DE SEGURIDAD</p>
         <h1>Pablo</h1>
         <p class="hero__role">Analista de Ciberseguridad — Blue Team</p>
-        <p>Técnico en Sistemas Microinformáticos y Redes (SMR), Técnico Superior en Administración de Sistemas Informáticos en Red (ASIR) y Máster en Ciberseguridad. Asegurar arquitecturas, automatizar lo repetible e investigar cuando algo falla — ese es el trabajo.</p>
+        <p>Defender sistemas, automatizar lo aburrido y entender exactamente qué pasó cuando algo falla. En ese orden, ese es el trabajo.</p>
         <div class="cta-row">
           <a class="btn btn--primary" href="#roadmap">Ver hoja de ruta →</a>
           <a class="btn" href="#contacto" style="border-bottom:1px solid var(--ink);">Hablemos</a>
@@ -267,6 +280,10 @@
           <h3>Detectar antes con IA</h3>
           <p>Usar IA y herramientas como Copilot for Security para analizar logs y encontrar anomalías más rápido.</p>
         </div>
+      </div>
+      <div class="principle">
+        <p class="principle__mark">HUMAN-FIRST<span>, NO IA-FIRST</span></p>
+        <p>La IA acelera la detección y filtra el ruido. La decisión final, siempre, la toma una persona.</p>
       </div>
     </div>
   </section>
@@ -352,11 +369,11 @@
       <p class="eyebrow">// PROYECTOS</p>
       <h2 class="section__title">Lo que he construido</h2>
       <div class="projects-grid">
-        <div class="project-card">
-          <p class="project-card__tag">// sustituye esto</p>
-          <h3>Hardening automatizado con Ansible</h3>
-          <p>Playbook que aplica una línea base de seguridad (CIS) a servidores Linux recién desplegados.</p>
-          <a href="#">Ver en GitHub →</a>
+        <div class="project-card project-card--live">
+          <p class="project-card__tag project-card__tag--live">// repositorio activo</p>
+          <h3>Rugby App Secure — Hardened Management Platform</h3>
+          <p>Ecosistema de gestión deportiva blindado bajo estándares de defensa en profundidad: microservicios aislados, autenticación de triple factor y mitigaciones activas contra vulnerabilidades web críticas.</p>
+          <a href="https://github.com/RepPabloSuarez-17/SEC-rugby-app" target="_blank" rel="noopener">Ver en GitHub →</a>
         </div>
         <div class="project-card">
           <p class="project-card__tag">// sustituye esto</p>
@@ -371,7 +388,7 @@
           <a href="#">Ver en GitHub →</a>
         </div>
       </div>
-      <p class="projects-note">Estos tres son plantillas de ejemplo. Sustitúyelas por tus repositorios reales — un proyecto bien documentado vale más que tres certificaciones.</p>
+      <p class="projects-note">El primero ya es un repositorio real. Sustituye las otras dos plantillas por tus próximos proyectos — un proyecto bien documentado vale más que tres certificaciones.</p>
     </div>
   </section>
 
@@ -380,9 +397,9 @@
       <p class="eyebrow">// CONTACTO</p>
       <h2 class="section__title">Hablemos</h2>
       <ul class="contact-list">
-        <li><span>Email</span><a href="mailto:tu-email@ejemplo.com">tu-email@ejemplo.com</a></li>
-        <li><span>GitHub</span><a href="https://github.com/tu-usuario" target="_blank" rel="noopener">github.com/tu-usuario</a></li>
-        <li><span>LinkedIn</span><a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener">linkedin.com/in/tu-usuario</a></li>
+        <li><span>Email</span><a href="mailto:pablosuarez0211@gmail.com">pablosuarez0211@gmail.com</a></li>
+        <li><span>GitHub</span><a href="https://github.com/RepPabloSuarez-17" target="_blank" rel="noopener">github.com/RepPabloSuarez-17</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/pablo-suárez-0a1424221" target="_blank" rel="noopener">linkedin.com/in/pablo-suárez-0a1424221</a></li>
         <li><span>Ubicación</span>Córdoba, España</li>
       </ul>
     </div>
