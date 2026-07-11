@@ -21,186 +21,151 @@
     --serif: 'PT Serif', serif;
     --maxw: 920px;
   }
-
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
   }
-
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--serif);
-    font-size:17px;
-    line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  a{color:var(--teal); text-decoration:none; border-bottom:1px solid currentColor;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
   a:hover{color:var(--ink);}
-  a:focus-visible, button:focus-visible{outline:2px solid var(--teal); outline-offset:3px;}
-
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
 
   /* TOPBAR */
-  .topbar{
-    border-bottom:1px solid var(--line);
-    background:var(--paper);
-    position:sticky; top:0; z-index:10;
-  }
-  .topbar__inner{
-    max-width:var(--maxw); margin:0 auto; padding:14px 28px;
-    display:flex; flex-wrap:wrap; gap:14px;
-    align-items:center; justify-content:space-between;
-    font-family:var(--mono); font-size:12.5px; letter-spacing:0.04em;
-  }
-  .topbar__meta{color:var(--slate); display:flex; align-items:center; gap:8px;}
-  .dot{
-    width:7px; height:7px; border-radius:50%; background:var(--teal); display:inline-block;
-    animation:pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.35;}}
-  .topbar__nav{display:flex; gap:18px; flex-wrap:wrap;}
-  .topbar__nav a{color:var(--ink); border-bottom:none; text-transform:uppercase;}
+  .topbar{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:10;}
+  .topbar__inner{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:12.5px;letter-spacing:0.04em;}
+  .topbar__meta{color:var(--slate);display:flex;align-items:center;gap:8px;}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  .topbar__right{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .topbar__nav{display:flex;gap:18px;flex-wrap:wrap;}
+  .topbar__nav a{color:var(--ink);border-bottom:none;text-transform:uppercase;}
   .topbar__nav a:hover{color:var(--teal);}
 
+  /* LANG TOGGLE */
+  .lang-toggle{
+    font-family:var(--mono);font-size:12px;letter-spacing:0.05em;
+    border:1px solid var(--line);background:transparent;color:var(--slate);
+    cursor:pointer;padding:5px 10px;display:flex;gap:6px;align-items:center;
+    transition:border-color 0.15s,color 0.15s;
+  }
+  .lang-toggle:hover{border-color:var(--teal);color:var(--teal);}
+  .lang-toggle__flag{font-size:14px;line-height:1;}
+
   /* HERO */
-  .hero{padding:64px 0 56px; border-bottom:1px solid var(--line);}
-  .hero__grid{display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:start;}
-  .eyebrow{
-    font-family:var(--mono); font-size:13px; letter-spacing:0.06em;
-    color:var(--teal); margin:0 0 14px;
-  }
-  .hero h1{
-    font-family:var(--mono); font-weight:700;
-    font-size:clamp(40px, 7vw, 64px); line-height:1; margin:0 0 10px; letter-spacing:-0.01em;
-  }
-  .hero__role{
-    font-family:var(--mono); font-weight:500; color:var(--slate);
-    font-size:18px; margin:0 0 22px;
-  }
-  .hero p{max-width:46ch; color:var(--ink); margin:0 0 28px;}
-  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
-  .btn{
-    font-family:var(--mono); font-size:13.5px; letter-spacing:0.02em;
-    padding:11px 18px; border:1px solid var(--ink); border-bottom-width:1px;
-    background:transparent; color:var(--ink); cursor:pointer; display:inline-block;
-  }
-  .btn:hover{background:var(--ink); color:var(--paper);}
-  .btn--primary{background:var(--ink); color:var(--paper);}
-  .btn--primary:hover{background:var(--teal); border-color:var(--teal); color:var(--paper);}
+  .hero{padding:64px 0 56px;border-bottom:1px solid var(--line);}
+  .hero__grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start;}
+  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:0.06em;color:var(--teal);margin:0 0 14px;}
+  .hero h1{font-family:var(--mono);font-weight:700;font-size:clamp(40px,7vw,64px);line-height:1;margin:0 0 10px;letter-spacing:-0.01em;}
+  .hero__role{font-family:var(--mono);font-weight:500;color:var(--slate);font-size:18px;margin:0 0 22px;}
+  .hero p{max-width:46ch;color:var(--ink);margin:0 0 28px;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{font-family:var(--mono);font-size:13.5px;letter-spacing:0.02em;padding:11px 18px;border:1px solid var(--ink);border-bottom-width:1px;background:transparent;color:var(--ink);cursor:pointer;display:inline-block;}
+  .btn:hover{background:var(--ink);color:var(--paper);}
+  .btn--primary{background:var(--ink);color:var(--paper);}
+  .btn--primary:hover{background:var(--teal);border-color:var(--teal);color:var(--paper);}
 
   /* CONSOLE PANEL */
-  .panel{
-    background:#0E1B1D; color:#D9E4DF; border-radius:4px; overflow:hidden;
-    box-shadow:0 18px 40px -20px rgba(14,27,29,0.5);
-  }
-  .panel__bar{
-    display:flex; gap:7px; align-items:center; padding:10px 14px;
-    background:#142426; border-bottom:1px solid #1E3436;
-  }
-  .panel__bar span{width:9px; height:9px; border-radius:50%; background:#3A5054; display:inline-block;}
-  .panel__bar small{margin-left:8px; font-family:var(--mono); font-size:11px; color:#6E8A87;}
-  .panel__body{padding:18px 16px 22px; font-family:var(--mono); font-size:13px;}
-  .panel__line{
-    margin:0 0 9px; opacity:0; animation:reveal 0.4s ease forwards;
-    color:#B9CCC6;
-  }
-  .panel__line b{color:#6FD3C7; font-weight:500;}
+  .panel{background:#0E1B1D;color:#D9E4DF;border-radius:4px;overflow:hidden;box-shadow:0 18px 40px -20px rgba(14,27,29,0.5);}
+  .panel__bar{display:flex;gap:7px;align-items:center;padding:10px 14px;background:#142426;border-bottom:1px solid #1E3436;}
+  .panel__bar span{width:9px;height:9px;border-radius:50%;background:#3A5054;display:inline-block;}
+  .panel__bar small{margin-left:8px;font-family:var(--mono);font-size:11px;color:#6E8A87;}
+  .panel__body{padding:18px 16px 22px;font-family:var(--mono);font-size:13px;}
+  .panel__line{margin:0 0 9px;opacity:0;animation:reveal 0.4s ease forwards;color:#B9CCC6;}
+  .panel__line b{color:#6FD3C7;font-weight:500;}
   .panel__line:nth-child(1){animation-delay:0.1s;}
   .panel__line:nth-child(2){animation-delay:0.5s;}
   .panel__line:nth-child(3){animation-delay:0.9s;}
   .panel__line:nth-child(4){animation-delay:1.3s;}
   .panel__line:nth-child(5){animation-delay:1.7s;}
   @keyframes reveal{to{opacity:1;}}
-  .cursor{display:inline-block; width:7px; height:13px; background:#6FD3C7; margin-left:2px;
-    animation:blink 1s step-end infinite; vertical-align:-2px;}
+  .cursor{display:inline-block;width:7px;height:13px;background:#6FD3C7;margin-left:2px;animation:blink 1s step-end infinite;vertical-align:-2px;}
   @keyframes blink{50%{opacity:0;}}
 
   /* SECTIONS */
-  .section{padding:60px 0; border-bottom:1px solid var(--line);}
-  .section__title{
-    font-family:var(--mono); font-weight:600; font-size:26px; margin:0 0 26px; letter-spacing:-0.01em;
-  }
-  .section p.lede{max-width:62ch; color:var(--slate); margin:0 0 30px;}
+  .section{padding:60px 0;border-bottom:1px solid var(--line);}
+  .section__title{font-family:var(--mono);font-weight:600;font-size:26px;margin:0 0 26px;letter-spacing:-0.01em;}
+  .section p.lede{max-width:62ch;color:var(--slate);margin:0 0 30px;}
 
   /* FOCUS GRID */
-  .focus-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
-  .focus-card{background:var(--paper); padding:26px;}
-  .focus-card__tag{
-    font-family:var(--mono); font-size:11.5px; letter-spacing:0.06em; color:var(--amber);
-    margin:0 0 12px; text-transform:uppercase;
-  }
-  .focus-card h3{font-family:var(--serif); font-size:19px; margin:0 0 8px;}
-  .focus-card p{font-size:15.5px; color:var(--slate); margin:0;}
-
-  .principle{
-    margin-top:28px; padding-top:24px; border-top:1px solid var(--line);
-    display:flex; align-items:baseline; gap:18px; flex-wrap:wrap;
-  }
-  .principle__mark{
-    font-family:var(--mono); font-weight:700; font-size:21px; letter-spacing:0.01em;
-    color:var(--ink); margin:0; white-space:nowrap;
-  }
+  .focus-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .focus-card{background:var(--paper);padding:26px;}
+  .focus-card__tag{font-family:var(--mono);font-size:11.5px;letter-spacing:0.06em;color:var(--amber);margin:0 0 12px;text-transform:uppercase;}
+  .focus-card h3{font-family:var(--serif);font-size:19px;margin:0 0 8px;}
+  .focus-card p{font-size:15.5px;color:var(--slate);margin:0;}
+  .principle{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;}
+  .principle__mark{font-family:var(--mono);font-weight:700;font-size:21px;letter-spacing:0.01em;color:var(--ink);margin:0;white-space:nowrap;}
   .principle__mark span{color:var(--teal);}
-  .principle p{font-family:var(--serif); color:var(--slate); margin:0; font-size:15.5px;}
+  .principle p{font-family:var(--serif);color:var(--slate);margin:0;font-size:15.5px;}
+
+  /* CERT OBTENIDA */
+  .cert-card{
+    border:1px solid var(--teal);padding:28px 28px 28px 24px;
+    display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;
+    background:var(--paper-dim);
+  }
+  .cert-badge{
+    width:90px;height:90px;border-radius:4px;background:#0E1B1D;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:6px;flex-shrink:0;
+  }
+  .cert-badge__shield{font-size:28px;line-height:1;}
+  .cert-badge__id{font-family:var(--mono);font-size:9px;color:#6FD3C7;letter-spacing:0.06em;text-align:center;}
+  .cert-card__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:10px;}
+  .cert-card__id{font-family:var(--mono);font-weight:700;font-size:17px;color:var(--teal);}
+  .cert-card__issuer{font-family:var(--mono);font-size:12px;color:var(--slate);letter-spacing:0.04em;}
+  .cert-card__date{font-family:var(--mono);font-size:11px;color:var(--slate);margin-left:auto;}
+  .cert-card h3{font-family:var(--serif);font-size:20px;margin:0 0 10px;}
+  .cert-card__desc{font-size:15.5px;color:var(--slate);margin:0 0 16px;max-width:58ch;}
+  .cert-domains{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
+  .cert-domain{
+    font-family:var(--mono);font-size:11px;letter-spacing:0.03em;
+    padding:4px 8px;border:1px solid var(--line);color:var(--slate);
+    background:var(--paper);
+  }
+  .cert-verify{font-family:var(--mono);font-size:12px;}
 
   /* ROADMAP */
   .phase{margin-bottom:38px;}
   .phase:last-child{margin-bottom:0;}
-  .phase__head{
-    display:flex; align-items:baseline; gap:12px; margin-bottom:16px;
-    font-family:var(--mono);
-  }
-  .phase__num{color:var(--teal); font-weight:600; font-size:14px;}
-  .phase__name{font-size:15px; color:var(--ink); text-transform:uppercase; letter-spacing:0.03em;}
-  .cert-list{border-left:2px solid var(--line); margin-left:6px;}
-  .cert{
-    position:relative; padding:6px 0 18px 26px;
-  }
-  .cert::before{
-    content:""; position:absolute; left:-6px; top:8px;
-    width:9px; height:9px; border-radius:50%; background:var(--paper);
-    border:2px solid var(--teal);
-  }
-  .cert__id{font-family:var(--mono); font-weight:600; font-size:15px; margin:0 0 3px;}
-  .cert__name{font-size:13.5px; color:var(--slate); font-family:var(--mono); margin:0 0 6px;}
-  .cert__desc{font-size:15px; color:var(--ink); margin:0; max-width:58ch;}
+  .phase__head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;font-family:var(--mono);}
+  .phase__num{color:var(--teal);font-weight:600;font-size:14px;}
+  .phase__name{font-size:15px;color:var(--ink);text-transform:uppercase;letter-spacing:0.03em;}
+  .cert-list{border-left:2px solid var(--line);margin-left:6px;}
+  .cert{position:relative;padding:6px 0 18px 26px;}
+  .cert::before{content:"";position:absolute;left:-6px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:2px solid var(--teal);}
+  .cert__id{font-family:var(--mono);font-weight:600;font-size:15px;margin:0 0 3px;}
+  .cert__name{font-size:13.5px;color:var(--slate);font-family:var(--mono);margin:0 0 6px;}
+  .cert__desc{font-size:15px;color:var(--ink);margin:0;max-width:58ch;}
 
   /* PROJECTS */
-  .projects-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
-  .project-card{
-    border:1px dashed var(--slate); padding:20px; background:var(--paper-dim);
-  }
-  .project-card--live{border-style:solid; border-color:var(--teal);}
-  .project-card__tag{font-family:var(--mono); font-size:11px; color:var(--amber); margin:0 0 10px;}
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .project-card{border:1px dashed var(--slate);padding:20px;background:var(--paper-dim);}
+  .project-card--live{border-style:solid;border-color:var(--teal);}
+  .project-card__tag{font-family:var(--mono);font-size:11px;color:var(--amber);margin:0 0 10px;}
   .project-card__tag--live{color:var(--teal);}
-  .project-card h3{font-size:16.5px; margin:0 0 8px; font-family:var(--serif);}
-  .project-card p{font-size:14.5px; color:var(--slate); margin:0 0 12px;}
-  .project-card a{font-family:var(--mono); font-size:13px;}
-  .projects-note{
-    margin-top:22px; font-family:var(--mono); font-size:13px; color:var(--slate);
-    border-left:2px solid var(--amber); padding-left:14px;
-  }
+  .project-card h3{font-size:16.5px;margin:0 0 8px;font-family:var(--serif);}
+  .project-card p{font-size:14.5px;color:var(--slate);margin:0 0 12px;}
+  .project-card a{font-family:var(--mono);font-size:13px;}
+  .projects-note{margin-top:22px;font-family:var(--mono);font-size:13px;color:var(--slate);border-left:2px solid var(--amber);padding-left:14px;}
 
   /* CONTACT */
-  .contact-list{list-style:none; padding:0; margin:0; font-family:var(--mono); font-size:16px;}
-  .contact-list li{padding:12px 0; border-bottom:1px solid var(--line); display:flex; gap:14px;}
+  .contact-list{list-style:none;padding:0;margin:0;font-family:var(--mono);font-size:16px;}
+  .contact-list li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;}
   .contact-list li:last-child{border-bottom:none;}
-  .contact-list span{color:var(--slate); min-width:90px; display:inline-block;}
-
-  .footer{
-    padding:26px 0 40px; font-family:var(--mono); font-size:12.5px; color:var(--slate);
-  }
+  .contact-list span{color:var(--slate);min-width:90px;display:inline-block;}
+  .footer{padding:26px 0 40px;font-family:var(--mono);font-size:12.5px;color:var(--slate);}
 
   @media (max-width:880px){
     .hero__grid{grid-template-columns:1fr;}
     .focus-grid{grid-template-columns:1fr;}
     .projects-grid{grid-template-columns:1fr;}
-    .topbar__inner{flex-direction:column; align-items:flex-start;}
+    .topbar__inner{flex-direction:column;align-items:flex-start;}
+    .cert-card{grid-template-columns:1fr;}
+    .cert-badge{width:70px;height:70px;}
+    .cert-card__date{margin-left:0;}
   }
 </style>
 </head>
@@ -208,36 +173,43 @@
 
   <header class="topbar">
     <div class="topbar__inner">
-      <div class="topbar__meta"><span class="dot"></span>EXPEDIENTE · CÓRDOBA, ES</div>
-      <nav class="topbar__nav">
-        <a href="#perfil">Perfil</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
+      <div class="topbar__meta"><span class="dot"></span><span data-i18n="topbar_meta">EXPEDIENTE · CÓRDOBA, ES</span></div>
+      <div class="topbar__right">
+        <nav class="topbar__nav">
+          <a href="#perfil" data-i18n="nav_perfil">Perfil</a>
+          <a href="#certs-obtenidas" data-i18n="nav_certs">Certificaciones</a>
+          <a href="#roadmap" data-i18n="nav_roadmap">Roadmap</a>
+          <a href="#proyectos" data-i18n="nav_proyectos">Proyectos</a>
+          <a href="#contacto" data-i18n="nav_contacto">Contacto</a>
+        </nav>
+        <button class="lang-toggle" id="langBtn" aria-label="Cambiar idioma">
+          <span class="lang-toggle__flag" id="langFlag">🇬🇧</span>
+          <span id="langLabel">EN</span>
+        </button>
+      </div>
     </div>
   </header>
 
   <section class="hero">
     <div class="wrap hero__grid">
       <div>
-        <p class="eyebrow">// PERFIL DE SEGURIDAD</p>
+        <p class="eyebrow" data-i18n="hero_eyebrow">// PERFIL DE SEGURIDAD</p>
         <h1>Pablo</h1>
-        <p class="hero__role">Analista de Ciberseguridad — Blue Team</p>
-        <p>Defender sistemas, automatizar lo aburrido y entender exactamente qué y cuando pasó lo que falló.</p>
+        <p class="hero__role" data-i18n="hero_role">Analista de Ciberseguridad — Blue Team</p>
+        <p data-i18n="hero_desc">Defender sistemas, automatizar lo aburrido y entender exactamente qué y cuando pasó lo que falló.</p>
         <div class="cta-row">
-          <a class="btn btn--primary" href="#roadmap">Ver hoja de ruta →</a>
-          <a class="btn" href="#contacto" style="border-bottom:1px solid var(--ink);">Hablemos</a>
+          <a class="btn btn--primary" href="#roadmap" data-i18n="hero_btn1">Ver hoja de ruta →</a>
+          <a class="btn" href="#contacto" style="border-bottom:1px solid var(--ink);" data-i18n="hero_btn2">Hablemos</a>
         </div>
       </div>
-      <div class="panel" aria-hidden="false">
+      <div class="panel">
         <div class="panel__bar"><span></span><span></span><span></span><small>monitor.log</small></div>
         <div class="panel__body">
-          <p class="panel__line">&gt; ubicación: <b>Córdoba, España</b></p>
-          <p class="panel__line">&gt; enfoque: <b>Blue Team / DevSecOps / IA aplicada</b></p>
-          <p class="panel__line">&gt; formación: <b>SMR · ASIR · Máster Ciberseguridad</b></p>
-          <p class="panel__line">&gt; siguiente certificación: <b>BTL1</b></p>
-          <p class="panel__line">&gt; estado: <b>Disponible para colaborar</b><span class="cursor"></span></p>
+          <p class="panel__line">&gt; <span data-i18n="p_location">ubicación</span>: <b>Córdoba, España</b></p>
+          <p class="panel__line">&gt; <span data-i18n="p_focus">enfoque</span>: <b>Blue Team / DevSecOps / IA aplicada</b></p>
+          <p class="panel__line">&gt; <span data-i18n="p_education">formación</span>: <b>SMR · ASIR · Máster Ciberseguridad</b></p>
+          <p class="panel__line">&gt; <span data-i18n="p_next">siguiente certificación</span>: <b>BTL1</b></p>
+          <p class="panel__line">&gt; <span data-i18n="p_status">estado</span>: <b data-i18n="p_available">Disponible para colaborar</b><span class="cursor"></span></p>
         </div>
       </div>
     </div>
@@ -245,119 +217,156 @@
 
   <section class="section" id="perfil">
     <div class="wrap">
-      <p class="eyebrow">// RESUMEN</p>
-      <h2 class="section__title">De los fundamentos a la arquitectura</h2>
-      <p class="lede">
-        El camino empezó por la base: redes, sistemas y administración (SMR y ASIR). El Máster en Ciberseguridad cerró el círculo hacia la parte que de verdad interesa — defender. Hoy el foco está en asegurar sistemas y arquitecturas de empresa, en cerrar las puertas antes de que alguien las encuentre, y en investigar a fondo cuando algo se cuela. La automatización y la IA no son un extra: son la forma de hacer todo esto a escala.
+      <p class="eyebrow" data-i18n="s_resumen_label">// RESUMEN</p>
+      <h2 class="section__title" data-i18n="s_resumen_title">Por qué defensa, y no otra cosa</h2>
+      <p class="lede" data-i18n="s_resumen_body">
+        Empecé por las redes y los sistemas porque quería entender cómo se construye algo antes de aprender a romperlo. SMR y ASIR pusieron la base técnica; el Máster en Ciberseguridad terminó de definir el rumbo: defender, no atacar. Hoy el foco está en asegurar sistemas y arquitecturas de empresa, en cerrar las puertas antes de que alguien las encuentre, y en investigar a fondo cuando algo se cuela. La automatización no es un extra: es la forma de hacer todo esto a escala.
       </p>
     </div>
   </section>
 
   <section class="section" id="cobertura">
     <div class="wrap">
-      <p class="eyebrow">// ÁREAS DE COBERTURA</p>
-      <h2 class="section__title">Dónde pongo el foco</h2>
+      <p class="eyebrow" data-i18n="s_areas_label">// ÁREAS DE COBERTURA</p>
+      <h2 class="section__title" data-i18n="s_areas_title">Dónde pongo el foco</h2>
     </div>
     <div class="wrap">
       <div class="focus-grid">
         <div class="focus-card">
-          <p class="focus-card__tag">Arquitectura</p>
-          <h3>Asegurar sistemas y arquitecturas</h3>
-          <p>Diseñar y reforzar la infraestructura de una empresa para que aguante el primer intento de entrada — y el segundo.</p>
+          <p class="focus-card__tag" data-i18n="fc1_tag">Arquitectura</p>
+          <h3 data-i18n="fc1_title">Resistir, no solo funcionar</h3>
+          <p data-i18n="fc1_desc">Construyo arquitecturas pensadas para que un atacante tenga que trabajar mucho más de lo que le compensa.</p>
         </div>
         <div class="focus-card">
-          <p class="focus-card__tag">Automatización</p>
-          <h3>Quitar lo repetitivo de en medio</h3>
-          <p>Integrar seguridad en el ciclo de vida del software (DevSecOps) y automatizar tareas con scripts y pipelines.</p>
+          <p class="focus-card__tag" data-i18n="fc2_tag">Automatización</p>
+          <h3 data-i18n="fc2_title">Quitar lo repetitivo de en medio</h3>
+          <p data-i18n="fc2_desc">Automatizo todo lo que no necesita que una persona lo repita cada día — para que la seguridad no dependa de la memoria de nadie.</p>
         </div>
         <div class="focus-card">
-          <p class="focus-card__tag">Respuesta a incidentes</p>
-          <h3>Investigar cuando algo se rompe</h3>
-          <p>Analizar incidentes reales, entender qué pasó exactamente y cerrar la puerta por la que entraron.</p>
+          <p class="focus-card__tag" data-i18n="fc3_tag">Respuesta a incidentes</p>
+          <h3 data-i18n="fc3_title">Entender qué pasó, no solo que pasó</h3>
+          <p data-i18n="fc3_desc">Cuando algo se rompe, quiero saber qué pasó, cuándo y por dónde exactamente.</p>
         </div>
         <div class="focus-card">
-          <p class="focus-card__tag">IA aplicada</p>
-          <h3>Detectar antes con IA</h3>
-          <p>Usar IA y herramientas como Copilot for Security para analizar logs y encontrar anomalías más rápido.</p>
+          <p class="focus-card__tag" data-i18n="fc4_tag">IA aplicada</p>
+          <h3 data-i18n="fc4_title">Encontrar la aguja en el pajar</h3>
+          <p data-i18n="fc4_desc">Uso IA para detectar la anomalía antes de que se convierta en incidente, no para sustituir el criterio.</p>
         </div>
       </div>
       <div class="principle">
         <p class="principle__mark">HUMAN-FIRST<span>, NO IA-FIRST</span></p>
-        <p>La IA acelera la detección y filtra el ruido. La decisión final, siempre, la toma una persona.</p>
+        <p data-i18n="principle_desc">La IA acelera la detección y filtra el ruido. La decisión final, siempre, la toma una persona.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICACIONES OBTENIDAS -->
+  <section class="section" id="certs-obtenidas">
+    <div class="wrap">
+      <p class="eyebrow" data-i18n="s_certs_label">// CERTIFICACIONES OBTENIDAS</p>
+      <h2 class="section__title" data-i18n="s_certs_title">Lo que ya está conseguido</h2>
+      <p class="lede" data-i18n="s_certs_lede">Certificaciones completadas y verificadas. No solo el papel — lo que aprendí con cada una.</p>
+
+      <div class="cert-card">
+        <div class="cert-badge">
+          <div class="cert-badge__shield">🛡️</div>
+          <div class="cert-badge__id">CLLMSP</div>
+        </div>
+        <div>
+          <div class="cert-card__head">
+            <span class="cert-card__id">CLLMSP</span>
+            <span class="cert-card__issuer">RED TEAM LEADERS</span>
+            <span class="cert-card__date" data-i18n="cert_date">Emitida: 16 jun 2026</span>
+          </div>
+          <h3 data-i18n="cert_title">Certified LLM Security Professional</h3>
+          <p class="cert-card__desc" data-i18n="cert_desc">Certificación vendor-neutral sobre seguridad de sistemas LLM en producción: desde la arquitectura del modelo hasta la respuesta ante incidentes. Cubre los 9 dominios de riesgo más críticos en entornos de IA desplegada.</p>
+          <div class="cert-domains">
+            <span class="cert-domain">LLM Fundamentals</span>
+            <span class="cert-domain">OWASP Top 10 LLMs</span>
+            <span class="cert-domain">Prompt Injection</span>
+            <span class="cert-domain">Jailbreak Security</span>
+            <span class="cert-domain">Governance & Risk</span>
+            <span class="cert-domain">Data Privacy</span>
+            <span class="cert-domain">MCP Security</span>
+            <span class="cert-domain">AI Agents</span>
+            <span class="cert-domain">DevSecOps for AI</span>
+          </div>
+          <span class="cert-verify"><a href="https://courses.redteamleaders.com/exam-completion/c8e5c6b8df94f0b4" target="_blank" rel="noopener" data-i18n="cert_verify">Verificar credencial →</a></span>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section" id="roadmap">
     <div class="wrap">
-      <p class="eyebrow">// HOJA DE RUTA</p>
-      <h2 class="section__title">Plan de certificaciones</h2>
-      <p class="lede">Ordenadas por fase, no por preferencia: cada una construye sobre la anterior, de operar a arquitectar.</p>
+      <p class="eyebrow" data-i18n="s_roadmap_label">// HOJA DE RUTA</p>
+      <h2 class="section__title" data-i18n="s_roadmap_title">Plan de certificaciones</h2>
+      <p class="lede" data-i18n="s_roadmap_lede">No es una lista de deseos, es un plan: cada certificación construye sobre la anterior, de operar a arquitectar.</p>
 
       <div class="phase">
-        <div class="phase__head"><span class="phase__num">FASE 01</span><span class="phase__name">Operación y análisis</span></div>
+        <div class="phase__head"><span class="phase__num">FASE 01</span><span class="phase__name" data-i18n="phase1">Operación y análisis</span></div>
         <div class="cert-list">
           <div class="cert">
             <p class="cert__id">BTL1</p>
             <p class="cert__name">Security Blue Team — Level 1</p>
-            <p class="cert__desc">Base 100% práctica para investigar incidentes reales desde el primer día.</p>
+            <p class="cert__desc" data-i18n="btl1_desc">Base 100% práctica para investigar incidentes reales desde el primer día.</p>
           </div>
           <div class="cert">
             <p class="cert__id">SC-200</p>
             <p class="cert__name">Microsoft Security Operations Analyst</p>
-            <p class="cert__desc">Especialización en el stack de Microsoft: Sentinel y Defender.</p>
+            <p class="cert__desc" data-i18n="sc200_desc">Especialización en el stack de Microsoft: Sentinel y Defender.</p>
           </div>
           <div class="cert">
             <p class="cert__id">CyberOps Associate</p>
             <p class="cert__name">Cisco</p>
-            <p class="cert__desc">Fundamentos de red sólidos: entender por dónde viaja el tráfico que hay que proteger.</p>
+            <p class="cert__desc" data-i18n="cyberops_desc">Fundamentos de red sólidos: entender por dónde viaja el tráfico que hay que proteger.</p>
           </div>
           <div class="cert">
             <p class="cert__id">IR-200</p>
             <p class="cert__name">Foundational Incident Response</p>
-            <p class="cert__desc">Proceso estructurado de respuesta ante incidentes, de la detección al cierre.</p>
+            <p class="cert__desc" data-i18n="ir200_desc">Proceso estructurado de respuesta ante incidentes, de la detección al cierre.</p>
           </div>
         </div>
       </div>
 
       <div class="phase">
-        <div class="phase__head"><span class="phase__num">FASE 02</span><span class="phase__name">Automatización y arquitectura</span></div>
+        <div class="phase__head"><span class="phase__num">FASE 02</span><span class="phase__name" data-i18n="phase2">Automatización y arquitectura</span></div>
         <div class="cert-list">
           <div class="cert">
             <p class="cert__id">AZ-400</p>
             <p class="cert__name">Azure DevOps Engineer Expert</p>
-            <p class="cert__desc">La pieza clave para integrar seguridad en el ciclo de vida del software (DevSecOps).</p>
+            <p class="cert__desc" data-i18n="az400_desc">La pieza clave para integrar seguridad en el ciclo de vida del software (DevSecOps).</p>
           </div>
           <div class="cert">
             <p class="cert__id">M365 Endpoint Admin</p>
             <p class="cert__name">Microsoft 365 Certified — Administrador de Puntos de Conexión Asociado</p>
-            <p class="cert__desc">Aseguramiento de endpoints: el primer perímetro frente a un atacante.</p>
+            <p class="cert__desc" data-i18n="m365_desc">Aseguramiento de endpoints: el primer perímetro frente a un atacante.</p>
           </div>
         </div>
       </div>
 
       <div class="phase">
-        <div class="phase__head"><span class="phase__num">FASE 03</span><span class="phase__name">Estrategia y nivel senior</span></div>
+        <div class="phase__head"><span class="phase__num">FASE 03</span><span class="phase__name" data-i18n="phase3">Estrategia y nivel senior</span></div>
         <div class="cert-list">
           <div class="cert">
             <p class="cert__id">ISO/IEC 27001:2022</p>
             <p class="cert__name">ISMS Internal Auditor</p>
-            <p class="cert__desc">Entender qué exige realmente la normativa a una organización.</p>
+            <p class="cert__desc" data-i18n="iso_desc">Entender qué exige realmente la normativa a una organización.</p>
           </div>
           <div class="cert">
             <p class="cert__id">CCSP</p>
             <p class="cert__name">Certified Cloud Security Professional</p>
-            <p class="cert__desc">El estándar de referencia en seguridad cloud.</p>
+            <p class="cert__desc" data-i18n="ccsp_desc">El estándar de referencia en seguridad cloud.</p>
           </div>
           <div class="cert">
             <p class="cert__id">CISSP</p>
             <p class="cert__name">ISC2</p>
-            <p class="cert__desc">La certificación más respetada para roles de arquitectura y gestión senior.</p>
+            <p class="cert__desc" data-i18n="cissp_desc">La certificación más respetada para roles de arquitectura y gestión senior.</p>
           </div>
           <div class="cert">
             <p class="cert__id">GCDA</p>
             <p class="cert__name">GIAC Certified Detection Analyst</p>
-            <p class="cert__desc">Especialización avanzada en detección de amenazas.</p>
+            <p class="cert__desc" data-i18n="gcda_desc">Especialización avanzada en detección de amenazas.</p>
           </div>
         </div>
       </div>
@@ -366,48 +375,208 @@
 
   <section class="section" id="proyectos">
     <div class="wrap">
-      <p class="eyebrow">// PROYECTOS</p>
-      <h2 class="section__title">Lo que he construido</h2>
+      <p class="eyebrow" data-i18n="s_proyectos_label">// PROYECTOS</p>
+      <h2 class="section__title" data-i18n="s_proyectos_title">Código, no solo certificados</h2>
       <div class="projects-grid">
         <div class="project-card project-card--live">
-          <p class="project-card__tag project-card__tag--live">// repositorio activo</p>
+          <p class="project-card__tag project-card__tag--live" data-i18n="proj1_tag">// repositorio activo</p>
           <h3>Rugby App Secure — Hardened Management Platform</h3>
-          <p>Ecosistema de gestión deportiva blindado bajo estándares de defensa en profundidad: microservicios aislados, autenticación de triple factor y mitigaciones activas contra vulnerabilidades web críticas.</p>
-          <a href="https://github.com/RepPabloSuarez-17/SEC-rugby-app" target="_blank" rel="noopener">Ver en GitHub →</a>
+          <p data-i18n="proj1_desc">Ecosistema de gestión deportiva blindado bajo estándares de defensa en profundidad: microservicios aislados, autenticación de triple factor y mitigaciones activas contra vulnerabilidades web críticas.</p>
+          <a href="https://github.com/RepPabloSuarez-17/SEC-rugby-app" target="_blank" rel="noopener" data-i18n="proj_link">Ver en GitHub →</a>
         </div>
         <div class="project-card">
-          <p class="project-card__tag">// sustituye esto</p>
-          <h3>Detección de anomalías en logs con Python</h3>
-          <p>Script que analiza logs de eventos y marca patrones de acceso fuera de lo normal.</p>
-          <a href="#">Ver en GitHub →</a>
+          <p class="project-card__tag" data-i18n="proj_placeholder">// próximamente</p>
+          <h3 data-i18n="proj2_title">Detección de anomalías en logs con Python</h3>
+          <p data-i18n="proj2_desc">Script que analiza logs de eventos y marca patrones de acceso fuera de lo normal.</p>
+          <a href="#" data-i18n="proj_link">Ver en GitHub →</a>
         </div>
         <div class="project-card">
-          <p class="project-card__tag">// sustituye esto</p>
-          <h3>Pipeline DevSecOps en Azure</h3>
-          <p>CI/CD con análisis de seguridad integrado antes de cada despliegue.</p>
-          <a href="#">Ver en GitHub →</a>
+          <p class="project-card__tag" data-i18n="proj_placeholder">// próximamente</p>
+          <h3 data-i18n="proj3_title">Pipeline DevSecOps en Azure</h3>
+          <p data-i18n="proj3_desc">CI/CD con análisis de seguridad integrado antes de cada despliegue.</p>
+          <a href="#" data-i18n="proj_link">Ver en GitHub →</a>
         </div>
       </div>
-      <p class="projects-note">El primero ya es un repositorio real y funcional. Los demas son ejemplo y posibles huecos de proyectos.</p>
+      <p class="projects-note" data-i18n="projects_note">El primero ya es un repositorio real y funcional. Los otros dos son espacio reservado para los próximos proyectos.</p>
     </div>
   </section>
 
   <section class="section" id="contacto" style="border-bottom:none;">
     <div class="wrap">
-      <p class="eyebrow">// CONTACTO</p>
-      <h2 class="section__title">Hablemos</h2>
+      <p class="eyebrow" data-i18n="s_contacto_label">// CONTACTO</p>
+      <h2 class="section__title" data-i18n="s_contacto_title">Hablemos</h2>
       <ul class="contact-list">
         <li><span>Email</span><a href="mailto:pablosuarez0211@gmail.com">pablosuarez0211@gmail.com</a></li>
         <li><span>GitHub</span><a href="https://github.com/RepPabloSuarez-17" target="_blank" rel="noopener">github.com/RepPabloSuarez-17</a></li>
         <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/pablo-suárez-0a1424221" target="_blank" rel="noopener">linkedin.com/in/pablo-suárez-0a1424221</a></li>
-        <li><span>Ubicación</span>Córdoba, España</li>
+        <li><span data-i18n="contact_location">Ubicación</span>Córdoba, España</li>
       </ul>
     </div>
   </section>
 
   <footer class="footer">
-    <div class="wrap">// Córdoba, España · construido con HTML, CSS y JS · 2026</div>
+    <div class="wrap">// Córdoba, España · <span data-i18n="footer_built">construido con HTML, CSS y JS</span> · 2026</div>
   </footer>
 
+<script>
+const translations = {
+  es: {
+    topbar_meta: "EXPEDIENTE · CÓRDOBA, ES",
+    nav_perfil: "Perfil",
+    nav_certs: "Certificaciones",
+    nav_roadmap: "Roadmap",
+    nav_proyectos: "Proyectos",
+    nav_contacto: "Contacto",
+    hero_eyebrow: "// PERFIL DE SEGURIDAD",
+    hero_role: "Analista de Ciberseguridad — Blue Team",
+    hero_desc: "Defender sistemas, automatizar lo aburrido y entender exactamente qué y cuando pasó lo que falló.",
+    hero_btn1: "Ver hoja de ruta →",
+    hero_btn2: "Hablemos",
+    p_location: "ubicación",
+    p_focus: "enfoque",
+    p_education: "formación",
+    p_next: "siguiente certificación",
+    p_status: "estado",
+    p_available: "Disponible para colaborar",
+    s_resumen_label: "// RESUMEN",
+    s_resumen_title: "Por qué defensa, y no otra cosa",
+    s_resumen_body: "Empecé por las redes y los sistemas porque quería entender cómo se construye algo antes de aprender a romperlo. SMR y ASIR pusieron la base técnica; el Máster en Ciberseguridad terminó de definir el rumbo: defender, no atacar. Hoy el foco está en asegurar sistemas y arquitecturas de empresa, en cerrar las puertas antes de que alguien las encuentre, y en investigar a fondo cuando algo se cuela. La automatización no es un extra: es la forma de hacer todo esto a escala.",
+    s_areas_label: "// ÁREAS DE COBERTURA",
+    s_areas_title: "Dónde pongo el foco",
+    fc1_tag: "Arquitectura", fc1_title: "Resistir, no solo funcionar",
+    fc1_desc: "Construyo arquitecturas pensadas para que un atacante tenga que trabajar mucho más de lo que le compensa.",
+    fc2_tag: "Automatización", fc2_title: "Quitar lo repetitivo de en medio",
+    fc2_desc: "Automatizo todo lo que no necesita que una persona lo repita cada día — para que la seguridad no dependa de la memoria de nadie.",
+    fc3_tag: "Respuesta a incidentes", fc3_title: "Entender qué pasó, no solo que pasó",
+    fc3_desc: "Cuando algo se rompe, quiero saber qué pasó, cuándo y por dónde exactamente.",
+    fc4_tag: "IA aplicada", fc4_title: "Encontrar la aguja en el pajar",
+    fc4_desc: "Uso IA para detectar la anomalía antes de que se convierta en incidente, no para sustituir el criterio.",
+    principle_desc: "La IA acelera la detección y filtra el ruido. La decisión final, siempre, la toma una persona.",
+    s_certs_label: "// CERTIFICACIONES OBTENIDAS",
+    s_certs_title: "Lo que ya está conseguido",
+    s_certs_lede: "Certificaciones completadas y verificadas. No solo el papel — lo que aprendí con cada una.",
+    cert_date: "Emitida: 16 jun 2026",
+    cert_title: "Certified LLM Security Professional",
+    cert_desc: "Certificación vendor-neutral sobre seguridad de sistemas LLM en producción: desde la arquitectura del modelo hasta la respuesta ante incidentes. Cubre los 9 dominios de riesgo más críticos en entornos de IA desplegada.",
+    cert_verify: "Verificar credencial →",
+    s_roadmap_label: "// HOJA DE RUTA",
+    s_roadmap_title: "Plan de certificaciones",
+    s_roadmap_lede: "No es una lista de deseos, es un plan: cada certificación construye sobre la anterior, de operar a arquitectar.",
+    phase1: "Operación y análisis", phase2: "Automatización y arquitectura", phase3: "Estrategia y nivel senior",
+    btl1_desc: "Base 100% práctica para investigar incidentes reales desde el primer día.",
+    sc200_desc: "Especialización en el stack de Microsoft: Sentinel y Defender.",
+    cyberops_desc: "Fundamentos de red sólidos: entender por dónde viaja el tráfico que hay que proteger.",
+    ir200_desc: "Proceso estructurado de respuesta ante incidentes, de la detección al cierre.",
+    az400_desc: "La pieza clave para integrar seguridad en el ciclo de vida del software (DevSecOps).",
+    m365_desc: "Aseguramiento de endpoints: el primer perímetro frente a un atacante.",
+    iso_desc: "Entender qué exige realmente la normativa a una organización.",
+    ccsp_desc: "El estándar de referencia en seguridad cloud.",
+    cissp_desc: "La certificación más respetada para roles de arquitectura y gestión senior.",
+    gcda_desc: "Especialización avanzada en detección de amenazas.",
+    s_proyectos_label: "// PROYECTOS",
+    s_proyectos_title: "Código, no solo certificados",
+    proj1_tag: "// repositorio activo", proj_placeholder: "// próximamente",
+    proj1_desc: "Ecosistema de gestión deportiva blindado bajo estándares de defensa en profundidad: microservicios aislados, autenticación de triple factor y mitigaciones activas contra vulnerabilidades web críticas.",
+    proj2_title: "Detección de anomalías en logs con Python",
+    proj2_desc: "Script que analiza logs de eventos y marca patrones de acceso fuera de lo normal.",
+    proj3_title: "Pipeline DevSecOps en Azure",
+    proj3_desc: "CI/CD con análisis de seguridad integrado antes de cada despliegue.",
+    proj_link: "Ver en GitHub →",
+    projects_note: "El primero ya es un repositorio real y funcional. Los otros dos son espacio reservado para los próximos proyectos.",
+    s_contacto_label: "// CONTACTO",
+    s_contacto_title: "Hablemos",
+    contact_location: "Ubicación",
+    footer_built: "construido con HTML, CSS y JS"
+  },
+  en: {
+    topbar_meta: "FILE · CÓRDOBA, ES",
+    nav_perfil: "Profile",
+    nav_certs: "Certifications",
+    nav_roadmap: "Roadmap",
+    nav_proyectos: "Projects",
+    nav_contacto: "Contact",
+    hero_eyebrow: "// SECURITY PROFILE",
+    hero_role: "Cybersecurity Analyst — Blue Team",
+    hero_desc: "Defending systems, automating the boring parts, and understanding exactly what failed and when.",
+    hero_btn1: "View roadmap →",
+    hero_btn2: "Get in touch",
+    p_location: "location",
+    p_focus: "focus",
+    p_education: "education",
+    p_next: "next certification",
+    p_status: "status",
+    p_available: "Available for collaboration",
+    s_resumen_label: "// ABOUT",
+    s_resumen_title: "Why defense, not offense",
+    s_resumen_body: "I started with networks and systems because I wanted to understand how things are built before learning how they break. SMR and ASIR laid the technical foundation; the Master's in Cybersecurity set the direction: defend, not attack. Today the focus is on securing enterprise systems and architectures, closing doors before anyone finds them, and investigating thoroughly when something slips through. Automation is not an extra — it is the way to do all of this at scale.",
+    s_areas_label: "// COVERAGE AREAS",
+    s_areas_title: "Where I focus",
+    fc1_tag: "Architecture", fc1_title: "Built to resist, not just to run",
+    fc1_desc: "I design architectures that make attackers work far harder than it is worth.",
+    fc2_tag: "Automation", fc2_title: "Remove the repetitive",
+    fc2_desc: "I automate everything that does not need a person behind it every day — so security does not depend on anyone's memory.",
+    fc3_tag: "Incident response", fc3_title: "Know what happened, not just that it did",
+    fc3_desc: "When something breaks, I want to know what happened, when, and exactly how.",
+    fc4_tag: "Applied AI", fc4_title: "Finding the needle in the haystack",
+    fc4_desc: "I use AI to catch anomalies before they become incidents, not to replace judgment.",
+    principle_desc: "AI speeds up detection and filters noise. The final call, always, is made by a person.",
+    s_certs_label: "// EARNED CERTIFICATIONS",
+    s_certs_title: "Already achieved",
+    s_certs_lede: "Completed and verified certifications. Not just the paper — what I actually learned.",
+    cert_date: "Issued: Jun 16, 2026",
+    cert_title: "Certified LLM Security Professional",
+    cert_desc: "Vendor-neutral certification on securing LLM systems in production: from model architecture to incident response. Covers the 9 most critical risk domains in deployed AI environments.",
+    cert_verify: "Verify credential →",
+    s_roadmap_label: "// ROADMAP",
+    s_roadmap_title: "Certification plan",
+    s_roadmap_lede: "Not a wish list — a plan. Each certification builds on the previous one, from operating to architecting.",
+    phase1: "Operation & analysis", phase2: "Automation & architecture", phase3: "Strategy & senior level",
+    btl1_desc: "100% practical foundation for investigating real incidents from day one.",
+    sc200_desc: "Specialization in the Microsoft security stack: Sentinel and Defender.",
+    cyberops_desc: "Solid network fundamentals: understanding where the traffic you need to protect actually travels.",
+    ir200_desc: "Structured incident response process, from detection to closure.",
+    az400_desc: "The key piece for integrating security into the software lifecycle (DevSecOps).",
+    m365_desc: "Endpoint hardening: the first perimeter against an attacker.",
+    iso_desc: "Understanding what compliance actually demands from an organization.",
+    ccsp_desc: "The gold standard for cloud security.",
+    cissp_desc: "The most respected certification for architecture and senior management roles.",
+    gcda_desc: "Advanced specialization in threat detection.",
+    s_proyectos_label: "// PROJECTS",
+    s_proyectos_title: "Code, not just certs",
+    proj1_tag: "// active repository", proj_placeholder: "// coming soon",
+    proj1_desc: "Sports management ecosystem hardened under defense-in-depth standards: isolated microservices, triple-factor authentication, and active mitigations against critical web vulnerabilities.",
+    proj2_title: "Log anomaly detection with Python",
+    proj2_desc: "Script that analyzes event logs and flags unusual access patterns.",
+    proj3_title: "DevSecOps pipeline on Azure",
+    proj3_desc: "CI/CD with integrated security analysis before every deployment.",
+    proj_link: "View on GitHub →",
+    projects_note: "The first one is a real, working repository. The other two are placeholders for upcoming projects.",
+    s_contacto_label: "// CONTACT",
+    s_contacto_title: "Get in touch",
+    contact_location: "Location",
+    footer_built: "built with HTML, CSS and JS"
+  }
+};
+
+let currentLang = 'es';
+
+function applyLang(lang) {
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  document.documentElement.lang = lang;
+  const flag = document.getElementById('langFlag');
+  const label = document.getElementById('langLabel');
+  if (lang === 'es') { flag.textContent = '🇬🇧'; label.textContent = 'EN'; }
+  else               { flag.textContent = '🇪🇸'; label.textContent = 'ES'; }
+}
+
+document.getElementById('langBtn').addEventListener('click', () => {
+  currentLang = currentLang === 'es' ? 'en' : 'es';
+  applyLang(currentLang);
+});
+</script>
 </body>
 </html>
