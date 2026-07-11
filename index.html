@@ -204,9 +204,9 @@
           <a href="#contacto" data-i18n="nav_contacto">Contacto</a>
         </nav>
         <button class="lang-toggle" id="langBtn" aria-label="Cambiar idioma">
-          <span class="lang-toggle__flag" id="langFlag">🇬🇧</span>
+          <span id="langCode1">EN</span>
           <span class="lang-toggle__sep">/</span>
-          <span id="langLabel">EN</span>
+          <span id="langCode2">EN</span>
         </button>
       </div>
     </div>
@@ -589,10 +589,13 @@ function applyLang(lang) {
     if (t[key] !== undefined) el.textContent = t[key];
   });
   document.documentElement.lang = lang;
-  const flag = document.getElementById('langFlag');
-  const label = document.getElementById('langLabel');
-  if (lang === 'es') { flag.textContent = '🇬🇧'; label.textContent = 'EN'; }
-  else               { flag.textContent = '🇪🇸'; label.textContent = 'ES'; }
+  if (lang === 'es') {
+    document.getElementById('langCode1').textContent = 'EN';
+    document.getElementById('langCode2').textContent = 'EN';
+  } else {
+    document.getElementById('langCode1').textContent = 'ES';
+    document.getElementById('langCode2').textContent = 'ES';
+  }
 }
 
 document.getElementById('langBtn').addEventListener('click', () => {
