@@ -3,829 +3,518 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pablo — Analista de Ciberseguridad</title>
-<meta name="description" content="Portfolio de Pablo, analista de ciberseguridad especializado en Blue Team, arquitectura de seguridad, automatización e IA aplicada a la detección.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
-<script>document.documentElement.classList.add('js');</script>
+<title>Una pregunta para ti</title>
 <style>
-  :root{
-    --paper:#F1F3EE;
-    --paper-dim:#E7EAE2;
-    --ink:#10181B;
-    --slate:#46535A;
-    --line:#D3D9CD;
-    --teal:#0E7C86;
-    --amber:#B86A1E;
-    --mono: 'IBM Plex Mono', monospace;
-    --serif: 'PT Serif', serif;
-    --maxw: 920px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
-  }
-  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;}
-  a{color:var(--teal);text-decoration:none;border-bottom:1px solid currentColor;}
-  a:hover{color:var(--ink);}
-  a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--teal);outline-offset:3px;}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
-  strong{font-weight:700;}
-  .beats strong,.hero p strong{background:linear-gradient(transparent 62%,rgba(184,106,30,0.22) 62%);}
- 
-  /* TOPBAR */
-  .topbar{border-bottom:1px solid var(--line);background:var(--paper);position:sticky;top:0;z-index:10;}
-  .topbar__inner{max-width:var(--maxw);margin:0 auto;padding:14px 28px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:12.5px;letter-spacing:0.04em;}
-  .topbar__meta{color:var(--slate);display:flex;align-items:center;gap:8px;}
-  .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);display:inline-block;animation:pulse 2.4s ease-in-out infinite;}
-  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
-  .topbar__right{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
-  .topbar__nav{display:flex;gap:18px;flex-wrap:wrap;}
-  .topbar__nav a{color:var(--ink);border-bottom:none;text-transform:uppercase;}
-  .topbar__nav a:hover{color:var(--teal);}
- 
-  /* LANG TOGGLE */
-  .lang-toggle{
-    font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:0.08em;
-    border:none;background:var(--ink);color:var(--paper);cursor:pointer;
-    padding:8px 14px;display:flex;gap:7px;align-items:center;border-radius:2px;
-    box-shadow:0 2px 8px rgba(14,27,29,0.18);
-    transition:background 0.18s,transform 0.1s,box-shadow 0.18s;
-    position:relative;overflow:hidden;
-  }
-  .lang-toggle::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(110,211,199,0.18) 0%,transparent 60%);pointer-events:none;}
-  .lang-toggle:hover{background:var(--teal);box-shadow:0 4px 16px rgba(14,124,134,0.35);transform:translateY(-1px);}
-  .lang-toggle:active{transform:translateY(0);box-shadow:0 1px 4px rgba(14,27,29,0.2);}
-  .lang-toggle__sep{color:rgba(255,255,255,0.3);font-weight:300;}
- 
-  /* HERO */
-  .hero{padding:64px 0 56px;border-bottom:1px solid var(--line);}
-  .hero__grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start;}
-  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:0.06em;color:var(--teal);margin:0 0 14px;}
-  .hero h1{font-family:var(--mono);font-weight:700;font-size:clamp(40px,7vw,64px);line-height:1;margin:0 0 10px;letter-spacing:-0.01em;}
-  .hero__role{font-family:var(--mono);font-weight:500;color:var(--slate);font-size:18px;margin:0 0 22px;}
-  .hero p{max-width:46ch;color:var(--ink);margin:0 0 28px;}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
-  .btn{font-family:var(--mono);font-size:13.5px;letter-spacing:0.02em;padding:11px 18px;border:1px solid var(--ink);border-bottom-width:1px;background:transparent;color:var(--ink);cursor:pointer;display:inline-block;}
-  .btn:hover{background:var(--ink);color:var(--paper);}
-  .btn--primary{background:var(--ink);color:var(--paper);}
-  .btn--primary:hover{background:var(--teal);border-color:var(--teal);color:var(--paper);}
-  .btn:disabled{opacity:0.6;cursor:default;}
- 
-  /* CONSOLE PANEL */
-  .panel{background:#0E1B1D;color:#D9E4DF;border-radius:4px;overflow:hidden;box-shadow:0 18px 40px -20px rgba(14,27,29,0.5);}
-  .panel__bar{display:flex;gap:7px;align-items:center;padding:10px 14px;background:#142426;border-bottom:1px solid #1E3436;}
-  .panel__bar span{width:9px;height:9px;border-radius:50%;background:#3A5054;display:inline-block;}
-  .panel__bar small{margin-left:8px;font-family:var(--mono);font-size:11px;color:#6E8A87;}
-  .panel__body{padding:18px 16px 22px;font-family:var(--mono);font-size:13px;}
-  .panel__line{margin:0 0 9px;opacity:0;animation:reveal 0.4s ease forwards;color:#B9CCC6;}
-  .panel__line b{color:#6FD3C7;font-weight:500;}
-  .panel__line:nth-child(1){animation-delay:0.1s;}
-  .panel__line:nth-child(2){animation-delay:0.5s;}
-  .panel__line:nth-child(3){animation-delay:0.9s;}
-  .panel__line:nth-child(4){animation-delay:1.3s;}
-  .panel__line:nth-child(5){animation-delay:1.7s;}
-  .panel__line:nth-child(6){animation-delay:2.3s;}
-  .panel__line--alert a{color:#E0A15B;border-bottom:1px solid currentColor;}
-  .panel__line--alert a:hover{color:#fff;}
-  @keyframes reveal{to{opacity:1;}}
-  .cursor{display:inline-block;width:7px;height:13px;background:#6FD3C7;margin-left:6px;animation:blink 1s step-end infinite;vertical-align:-2px;}
-  @keyframes blink{50%{opacity:0;}}
- 
-  /* SECTIONS */
-  .section{padding:60px 0;border-bottom:1px solid var(--line);}
-  .section__title{font-family:var(--mono);font-weight:600;font-size:26px;margin:0 0 26px;letter-spacing:-0.01em;}
-  .section p.lede{max-width:62ch;color:var(--slate);margin:0 0 30px;}
-  .hint{font-family:var(--mono);font-size:12px;color:var(--slate);margin:14px 0 0;}
-  .teaser{margin:38px 0 0;font-family:var(--mono);font-size:13px;color:var(--slate);}
-  .teaser a{color:var(--teal);border-bottom:1px dashed currentColor;}
-  .teaser a:hover{color:var(--ink);}
- 
-  /* RESUMEN: frases cortas, palabra clave primero */
-  .beats{max-width:62ch;display:grid;gap:14px;}
-  .beats p{margin:0;font-size:18px;color:var(--ink);padding-left:16px;border-left:2px solid var(--line);}
-  .beats p:nth-child(3){border-left-color:var(--teal);}
- 
-  /* CIFRAS */
-  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:38px 0 0;}
-  .stat{background:var(--paper);padding:20px 18px;}
-  .stat__n{font-family:var(--mono);font-weight:700;font-size:40px;line-height:1;color:var(--teal);margin:0 0 8px;}
-  .stat__l{font-family:var(--mono);font-size:12px;color:var(--slate);margin:0;letter-spacing:0.03em;}
- 
-  /* FOCUS GRID (tarjetas expandibles) */
-  .focus-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);align-items:start;}
-  .focus-card{background:var(--paper);}
-  .focus-card summary{list-style:none;cursor:pointer;padding:26px;display:grid;grid-template-columns:1fr auto;column-gap:16px;}
-  .focus-card summary::-webkit-details-marker{display:none;}
-  .focus-card summary:hover{background:var(--paper-dim);}
-  .focus-card__tag{grid-column:1;display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:0.06em;color:var(--amber);margin:0 0 12px;text-transform:uppercase;}
-  .focus-card h3{grid-column:1;font-family:var(--serif);font-size:19px;margin:0;}
-  .focus-card__plus{grid-column:2;grid-row:1 / span 2;align-self:start;font-family:var(--mono);font-size:22px;line-height:1;color:var(--teal);}
-  .focus-card__plus::before{content:"+";}
-  .focus-card[open] .focus-card__plus::before{content:"−";}
-  .focus-card__body{padding:0 26px 26px;margin:0;font-size:15.5px;color:var(--slate);}
- 
-  /* ÚNICO ELEMENTO OSCURO A TODO ANCHO: principio */
-  .principle{margin-top:28px;padding:26px 28px;background:var(--ink);display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;}
-  .principle__mark{font-family:var(--mono);font-weight:700;font-size:21px;letter-spacing:0.01em;color:var(--paper);margin:0;white-space:nowrap;}
-  .principle__mark span{color:#6FD3C7;}
-  .principle p{font-family:var(--serif);color:#B9CCC6;margin:0;font-size:15.5px;}
- 
-  /* SELLOS DE ESTADO */
-  .stamp{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:0.08em;padding:2px 8px;border:1px solid currentColor;white-space:nowrap;}
-  .stamp--closed{color:#fff;background:var(--teal);border-color:var(--teal);}
-  .stamp--next{color:var(--amber);}
-  .stamp--queue{color:var(--slate);border-style:dashed;}
- 
-  /* CERT OBTENIDA */
-  .cert-card{border:1px solid var(--teal);padding:28px 28px 28px 24px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start;background:var(--paper-dim);}
-  .cert-badge{width:90px;height:90px;border-radius:4px;background:#0E1B1D;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;flex-shrink:0;}
-  .cert-badge__shield{font-size:28px;line-height:1;}
-  .cert-badge__id{font-family:var(--mono);font-size:9px;color:#6FD3C7;letter-spacing:0.06em;text-align:center;}
-  .cert-card__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:10px;}
-  .cert-card__id{font-family:var(--mono);font-weight:700;font-size:17px;color:var(--teal);}
-  .cert-card__issuer{font-family:var(--mono);font-size:12px;color:var(--slate);letter-spacing:0.04em;}
-  .cert-card__date{font-family:var(--mono);font-size:11px;color:var(--slate);margin-left:auto;}
-  .cert-card h3{font-family:var(--serif);font-size:20px;margin:0 0 10px;}
-  .cert-card__desc{font-size:15.5px;color:var(--slate);margin:0 0 16px;max-width:58ch;}
-  .cert-domains{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px;}
-  .cert-domain{font-family:var(--mono);font-size:11px;letter-spacing:0.03em;padding:4px 8px;border:1px solid var(--line);color:var(--slate);background:var(--paper);}
-  .cert-verify{font-family:var(--mono);font-size:12px;margin:0;}
- 
-  /* ROADMAP */
-  .phase{margin-bottom:38px;}
-  .phase:last-child{margin-bottom:0;}
-  .phase__head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;font-family:var(--mono);}
-  .phase__head .stamp{margin-left:auto;}
-  .phase__num{color:var(--teal);font-weight:600;font-size:14px;}
-  .phase__name{font-size:15px;color:var(--ink);text-transform:uppercase;letter-spacing:0.03em;}
-  .cert-list{border-left:2px solid var(--line);margin-left:6px;}
-  .cert{position:relative;padding:6px 0 18px 26px;}
-  .cert::before{content:"";position:absolute;left:-6px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--paper);border:2px solid var(--teal);}
-  .cert__id{font-family:var(--mono);font-weight:600;font-size:15px;margin:0 0 3px;}
-  .cert__name{font-size:13.5px;color:var(--slate);font-family:var(--mono);margin:0 0 6px;}
-  .cert__desc{font-size:15px;color:var(--ink);margin:0;max-width:58ch;}
- 
-  /* PROJECTS */
-  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  .project-card{border:1px dashed var(--slate);padding:20px;background:var(--paper-dim);}
-  .project-card--live{border-style:solid;border-color:var(--teal);}
-  .project-card__tag{font-family:var(--mono);font-size:11px;color:var(--amber);margin:0 0 10px;}
-  .project-card__tag--live{color:var(--teal);}
-  .project-card h3{font-size:16.5px;margin:0 0 8px;font-family:var(--serif);}
-  .project-card p{font-size:14.5px;color:var(--slate);margin:0 0 12px;}
-  .project-card a{font-family:var(--mono);font-size:13px;}
-  .projects-note{margin-top:22px;font-family:var(--mono);font-size:13px;color:var(--slate);border-left:2px solid var(--amber);padding-left:14px;}
- 
-  /* MOMENTO PICO: reproducción de incidente */
-  .log{font-family:var(--mono);font-size:12.5px;line-height:1.75;color:#B9CCC6;overflow-wrap:anywhere;padding:18px 16px;}
-  .log__line{margin:0 0 4px;}
-  .log__t{color:#6E8A87;}
-  .log__src{color:#6FD3C7;}
-  .lv{font-weight:600;}
-  .lv--warn{color:#D9C26A;}
-  .lv--alert{color:#E0A15B;}
-  .lv--info{color:#6FD3C7;}
-  .js .log__line{opacity:0;transform:translateY(4px);transition:opacity 0.35s ease,transform 0.35s ease;}
-  .js .log__line.is-on{opacity:1;transform:none;}
-  .incident__bar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px;}
-  .incident__bar .hint{margin:0;}
-  .verdict{margin-top:22px;border:1px solid var(--teal);background:var(--paper-dim);padding:22px;}
-  .js .verdict{display:none;}
-  .js .verdict.is-on{display:block;}
-  .verdict__title{font-family:var(--mono);font-size:12px;letter-spacing:0.06em;color:var(--teal);margin:0 0 8px;}
-  .verdict__body{margin:0 0 18px;max-width:62ch;}
-  .verdict__steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:16px;}
-  .vstep{background:var(--paper);padding:14px 16px;}
-  .vstep__t{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--amber);margin:0 0 4px;}
-  .vstep__d{margin:0;font-size:14.5px;color:var(--slate);}
-  .verdict__human{font-family:var(--mono);font-size:13px;border-left:2px solid var(--amber);padding-left:14px;margin:0;}
- 
-  /* CONTACT */
-  .contact-list{list-style:none;padding:0;margin:0;font-family:var(--mono);font-size:16px;}
-  .contact-list li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;}
-  .contact-list li:last-child{border-bottom:none;}
-  .contact-list span{color:var(--slate);min-width:90px;display:inline-block;}
-  .contact-cta{margin-top:26px;}
-  .closing{margin:34px 0 0;padding-top:22px;border-top:1px solid var(--line);font-family:var(--mono);font-size:15px;color:var(--ink);}
-  .footer{padding:26px 0 40px;font-family:var(--mono);font-size:12.5px;color:var(--slate);}
- 
-  @media (max-width:880px){
-    .hero__grid{grid-template-columns:1fr;}
-    .focus-grid{grid-template-columns:1fr;}
-    .projects-grid{grid-template-columns:1fr;}
-    .topbar__inner{flex-direction:column;align-items:flex-start;}
-    .cert-card{grid-template-columns:1fr;}
-    .cert-badge{width:70px;height:70px;}
-    .cert-card__date{margin-left:0;}
-    .stats{grid-template-columns:repeat(2,1fr);}
-    .verdict__steps{grid-template-columns:1fr;}
-    .principle__mark{white-space:normal;}
-  }
+:root{
+  --bg-deep:      #14182b;
+  --bg-mid:       #1c2340;
+  --gold:         #d8a85c;
+  --gold-soft:    #e9c98b;
+  --cream:        #f4ecd8;
+}
 </style>
 </head>
 <body>
  
-  <header class="topbar">
-    <div class="topbar__inner">
-      <div class="topbar__meta"><span class="dot"></span><span data-i18n="topbar_meta">EXPEDIENTE · CÓRDOBA, ES</span></div>
-      <div class="topbar__right">
-        <nav class="topbar__nav">
-          <a href="#perfil" data-i18n="nav_perfil">Perfil</a>
-          <a href="#certs-obtenidas" data-i18n="nav_certs">Certificaciones</a>
-          <a href="#roadmap" data-i18n="nav_roadmap">Roadmap</a>
-          <a href="#proyectos" data-i18n="nav_proyectos">Proyectos</a>
-          <a href="#contacto" data-i18n="nav_contacto">Contacto</a>
-        </nav>
-        <button class="lang-toggle" id="langBtn" aria-label="Cambiar idioma">
-          <span id="langCode1">EN</span>
-          <span class="lang-toggle__sep">/</span>
-          <span id="langCode2">EN</span>
-        </button>
-      </div>
+<canvas id="stars"></canvas>
+ 
+<!-- Botón secreto invisible: colócalo donde quieras tocando top/right en el CSS de #secretTrigger -->
+<button id="secretTrigger" aria-hidden="true" tabindex="-1"></button>
+ 
+<main class="stage">
+  <p class="eyebrow" id="eyebrow"></p>
+  <h1 class="question" id="question"></h1>
+  <p class="subtitle" id="subtitle"></p>
+  <div class="details"><span id="detail-line"></span></div>
+ 
+  <div class="answers">
+    <button class="btn-yes" id="btnYes">Sí, cuenta conmigo</button>
+    <button class="btn-no" id="btnNo">No puedo</button>
+  </div>
+ 
+  <p class="hint">(el botón de "no" tiene poco de fiar)</p>
+</main>
+ 
+<div class="celebration" id="celebration">
+  <div class="celebration-card">
+    <p class="celebration-emoji">✦</p>
+    <h2 id="celebrationTitle"></h2>
+    <p id="celebrationText"></p>
+  </div>
+</div>
+ 
+<button class="music-toggle" id="musicToggle" aria-label="Reproducir música">♪</button>
+<div id="yt-player" style="position:fixed; width:1px; height:1px; overflow:hidden; opacity:0;"></div>
+ 
+<!-- ================= PANEL SECRETO DE EDICIÓN ================= -->
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-panel">
+    <h3>Editar esta invitación</h3>
+    <p class="admin-note">Cambia lo que quieras y pulsa "Vista previa" para verlo en la página. Cuando estés contento, pulsa "Copiar configuración" y pega ese bloque en el archivo .html, dentro de <code>const CONTENT = {...}</code>, sustituyendo el que hay. Así la página se queda estática, sin depender de nada externo.</p>
+ 
+    <label>Texto pequeño de arriba
+      <input type="text" id="f_eyebrow">
+    </label>
+    <label>Pregunta principal
+      <input type="text" id="f_question">
+    </label>
+    <label>Subtítulo
+      <textarea id="f_subtitle" rows="2"></textarea>
+    </label>
+    <label>Línea de detalles del plan
+      <input type="text" id="f_details">
+    </label>
+    <label>Título al decir que sí
+      <input type="text" id="f_celTitle">
+    </label>
+    <label>Texto al decir que sí
+      <textarea id="f_celText" rows="2"></textarea>
+    </label>
+ 
+    <div class="admin-row">
+      <label>Fondo oscuro
+        <input type="color" id="f_bgDeep">
+      </label>
+      <label>Fondo medio
+        <input type="color" id="f_bgMid">
+      </label>
+      <label>Dorado
+        <input type="color" id="f_gold">
+      </label>
+      <label>Dorado claro
+        <input type="color" id="f_goldSoft">
+      </label>
+      <label>Texto crema
+        <input type="color" id="f_cream">
+      </label>
     </div>
-  </header>
  
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div>
-        <p class="eyebrow" data-i18n="hero_eyebrow">// PERFIL DE SEGURIDAD</p>
-        <h1>Pablo</h1>
-        <p class="hero__role" data-i18n="hero_role">Analista de Ciberseguridad — Blue Team</p>
-        <p data-i18n-html="hero_desc"><strong>Defender</strong> sistemas, <strong>automatizar</strong> lo aburrido y entender exactamente qué y cuando pasó lo que falló.</p>
-        <div class="cta-row">
-          <a class="btn btn--primary" href="#roadmap" data-i18n="hero_btn1">Ver hoja de ruta →</a>
-          <a class="btn" href="#contacto" style="border-bottom:1px solid var(--ink);" data-i18n="hero_btn2">Hablemos</a>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="panel__bar"><span></span><span></span><span></span><small>monitor.log</small></div>
-        <div class="panel__body">
-          <p class="panel__line">&gt; <span data-i18n="p_location">ubicación</span>: <b>Córdoba, España</b></p>
-          <p class="panel__line">&gt; <span data-i18n="p_focus">enfoque</span>: <b>Blue Team / DevSecOps / IA aplicada</b></p>
-          <p class="panel__line">&gt; <span data-i18n="p_education">formación</span>: <b>SMR · ASIR · Máster Ciberseguridad</b></p>
-          <p class="panel__line">&gt; <span data-i18n="p_next">siguiente certificación</span>: <b>BTL1</b></p>
-          <p class="panel__line">&gt; <span data-i18n="p_status">estado</span>: <b data-i18n="p_available">Disponible para colaborar</b></p>
-          <p class="panel__line panel__line--alert">&gt; <span data-i18n="p_alert">alerta</span>: <a href="#incidente" data-i18n="p_alert_val">1 evento sin clasificar — ver</a><span class="cursor"></span></p>
-        </div>
-      </div>
+    <label>Música
+      <select id="f_musicType">
+        <option value="none">Sin música</option>
+        <option value="youtube">Vídeo de YouTube (oculto)</option>
+        <option value="mp3">Archivo mp3 con enlace directo</option>
+      </select>
+    </label>
+    <label id="wrap_youtubeId">ID del vídeo de YouTube (lo que va después de v= en la URL)
+      <input type="text" id="f_youtubeId" placeholder="p.ej. dQw4w9WgXcQ">
+    </label>
+    <label id="wrap_mp3Url">Enlace directo al mp3
+      <input type="text" id="f_mp3Url" placeholder="https://.../cancion.mp3">
+    </label>
+ 
+    <div class="admin-actions">
+      <button id="btnPreview">Vista previa</button>
+      <button id="btnCopy">Copiar configuración</button>
+      <button id="btnCloseAdmin">Cerrar</button>
     </div>
-  </section>
+    <p class="admin-copied" id="copiedMsg">Copiado. Pégalo en el código, dentro de const CONTENT.</p>
+  </div>
+</div>
  
-  <section class="section" id="perfil">
-    <div class="wrap">
-      <p class="eyebrow" data-i18n="s_resumen_label">// RESUMEN</p>
-      <h2 class="section__title" data-i18n="s_resumen_title">Por qué defensa, y no otra cosa</h2>
-      <div class="beats">
-        <p data-i18n-html="s_resumen_b1">Empecé por las <strong>redes y los sistemas</strong>: quería entender cómo se construye algo antes de aprender a romperlo.</p>
-        <p data-i18n-html="s_resumen_b2">SMR y ASIR pusieron la base. El Máster en Ciberseguridad fijó el rumbo: <strong>defender, no atacar</strong>.</p>
-        <p data-i18n-html="s_resumen_b3">Hoy el foco: asegurar arquitecturas, <strong>cerrar las puertas antes de que alguien las encuentre</strong> e investigar a fondo cuando algo se cuela.</p>
-        <p data-i18n-html="s_resumen_b4">La automatización no es un extra: es cómo se hace todo esto <strong>a escala</strong>.</p>
-      </div>
+<style>
+*{ box-sizing: border-box; }
+html,body{
+  margin:0; padding:0; min-height:100%;
+  background: radial-gradient(120% 140% at 50% 0%, var(--bg-mid), var(--bg-deep) 60%);
+  color: var(--cream);
+  font-family:'Iowan Old Style','Georgia','Times New Roman',serif;
+  overflow-x:hidden;
+}
+#stars{ position:fixed; inset:0; z-index:0; pointer-events:none; }
  
-      <div class="stats">
-        <div class="stat"><p class="stat__n">1</p><p class="stat__l" data-i18n="stat1_l">certificación obtenida</p></div>
-        <div class="stat"><p class="stat__n">10</p><p class="stat__l" data-i18n="stat2_l">en la hoja de ruta</p></div>
-        <div class="stat"><p class="stat__n">9</p><p class="stat__l" data-i18n="stat3_l">dominios de riesgo LLM</p></div>
-        <div class="stat"><p class="stat__n">1</p><p class="stat__l" data-i18n="stat4_l">repositorio activo</p></div>
-      </div>
+.stage{
+  position:relative; z-index:1; min-height:100vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:8vh 6vw 12vh;
+}
+.eyebrow{
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;
+  font-size:0.78rem; letter-spacing:0.14em; color:var(--gold-soft);
+  margin:0 0 1.4rem; opacity:0.85;
+}
+.question{
+  font-size:clamp(1.9rem,5vw,3.4rem); line-height:1.15; margin:0 0 1.1rem;
+  font-weight:500; max-width:16ch; color:var(--cream);
+}
+.subtitle{
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;
+  font-size:1.02rem; line-height:1.6; color:var(--gold-soft);
+  max-width:38ch; margin:0 0 2.2rem; opacity:0.9;
+}
+.details{
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;
+  font-size:0.92rem; color:var(--cream);
+  border-top:1px solid rgba(216,168,92,0.3); border-bottom:1px solid rgba(216,168,92,0.3);
+  padding:0.85rem 1.4rem; margin-bottom:2.6rem; opacity:0.8;
+}
+.answers{
+  position:relative; display:flex; gap:1.1rem; align-items:center; justify-content:center;
+  flex-wrap:wrap; min-height:70px; width:100%;
+}
+button{
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;
+  cursor:pointer; border:none; outline:none; border-radius:999px;
+  transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+.btn-yes{
+  background:linear-gradient(135deg, var(--gold-soft), var(--gold));
+  color:#241a0c; font-size:1rem; font-weight:600; padding:0.95rem 2.1rem;
+  box-shadow:0 8px 24px rgba(216,168,92,0.35);
+}
+.btn-yes:hover{ transform:scale(1.05); box-shadow:0 10px 30px rgba(216,168,92,0.5); }
+.btn-yes:active{ transform:scale(0.98); }
+.btn-no{
+  background:rgba(244,236,216,0.08); color:var(--cream); font-size:0.95rem;
+  padding:0.95rem 1.8rem; border:1px solid rgba(244,236,216,0.25); position:relative;
+}
+.hint{
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;
+  font-size:0.78rem; color:rgba(244,236,216,0.45); margin-top:1.6rem;
+}
+.celebration{
+  position:fixed; inset:0; z-index:5; display:none; align-items:center; justify-content:center;
+  background:radial-gradient(120% 140% at 50% 0%, var(--bg-mid), var(--bg-deep) 60%);
+  animation:fadeIn 0.6s ease forwards;
+}
+.celebration.show{ display:flex; }
+@keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
+.celebration-card{ text-align:center; padding:2rem; max-width:26rem; }
+.celebration-emoji{ font-size:2.4rem; color:var(--gold); margin:0 0 1rem; animation:pulse 1.8s ease-in-out infinite; }
+@keyframes pulse{ 0%,100%{transform:scale(1);opacity:0.85;} 50%{transform:scale(1.15);opacity:1;} }
+.celebration-card h2{ font-size:clamp(1.6rem,4vw,2.4rem); margin:0 0 0.8rem; font-weight:500; color:var(--cream); }
+.celebration-card p{
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif; color:var(--gold-soft);
+  font-size:1rem; line-height:1.6; opacity:0.9;
+}
+.music-toggle{
+  position:fixed; bottom:1.4rem; right:1.4rem; z-index:10; width:46px; height:46px;
+  border-radius:50%; background:rgba(244,236,216,0.1); border:1px solid rgba(244,236,216,0.3);
+  color:var(--cream); font-size:1.1rem; display:flex; align-items:center; justify-content:center;
+}
+.music-toggle.playing{ background:var(--gold); color:#241a0c; border-color:var(--gold); }
  
-      <p class="teaser"><a href="#cobertura" data-i18n="tz_resumen">Siguiente: ¿dónde exactamente pongo el foco? →</a></p>
-    </div>
-  </section>
+/* Botón secreto: totalmente invisible. Mueve top/right para reubicarlo. */
+#secretTrigger{
+  position:fixed;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:220px;
+  height:70px;
+  background:transparent;
+  border:none;
+  padding:0;
+  z-index:20;
+  cursor:default;
+}
  
-  <section class="section" id="cobertura">
-    <div class="wrap">
-      <p class="eyebrow" data-i18n="s_areas_label">// ÁREAS DE COBERTURA</p>
-      <h2 class="section__title" data-i18n="s_areas_title">Cuatro frentes donde no se puede mirar a otro lado</h2>
-    </div>
-    <div class="wrap">
-      <div class="focus-grid">
-        <details class="focus-card">
-          <summary>
-            <span class="focus-card__tag" data-i18n="fc1_tag">Arquitectura</span>
-            <h3 data-i18n="fc1_title">Resistir, no solo funcionar</h3>
-            <span class="focus-card__plus" aria-hidden="true"></span>
-          </summary>
-          <p class="focus-card__body" data-i18n="fc1_desc">Construyo arquitecturas pensadas para que un atacante tenga que trabajar mucho más de lo que le compensa.</p>
-        </details>
-        <details class="focus-card">
-          <summary>
-            <span class="focus-card__tag" data-i18n="fc2_tag">Automatización</span>
-            <h3 data-i18n="fc2_title">Quitar lo repetitivo de en medio</h3>
-            <span class="focus-card__plus" aria-hidden="true"></span>
-          </summary>
-          <p class="focus-card__body" data-i18n="fc2_desc">Automatizo todo lo que no necesita que una persona lo repita cada día — para que la seguridad no dependa de la memoria de nadie.</p>
-        </details>
-        <details class="focus-card">
-          <summary>
-            <span class="focus-card__tag" data-i18n="fc3_tag">Respuesta a incidentes</span>
-            <h3 data-i18n="fc3_title">Entender qué pasó, no solo que pasó</h3>
-            <span class="focus-card__plus" aria-hidden="true"></span>
-          </summary>
-          <p class="focus-card__body" data-i18n="fc3_desc">Cuando algo se rompe, quiero saber qué pasó, cuándo y por dónde exactamente.</p>
-        </details>
-        <details class="focus-card">
-          <summary>
-            <span class="focus-card__tag" data-i18n="fc4_tag">IA aplicada</span>
-            <h3 data-i18n="fc4_title">Encontrar la aguja en el pajar</h3>
-            <span class="focus-card__plus" aria-hidden="true"></span>
-          </summary>
-          <p class="focus-card__body" data-i18n="fc4_desc">Uso IA para detectar la anomalía antes de que se convierta en incidente, no para sustituir el criterio.</p>
-        </details>
-      </div>
-      <p class="hint" data-i18n="focus_hint">// toca una tarjeta para abrirla</p>
+/* Panel de administración */
+.admin-overlay{
+  position:fixed; inset:0; z-index:50; display:none;
+  background:rgba(10,12,24,0.92); align-items:flex-start; justify-content:center;
+  overflow-y:auto; padding:5vh 1.2rem;
+}
+.admin-overlay.show{ display:flex; }
+.admin-panel{
+  background:#1c2340; border:1px solid rgba(216,168,92,0.35); border-radius:14px;
+  padding:1.6rem; max-width:480px; width:100%;
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif; color:var(--cream);
+}
+.admin-panel h3{ margin:0 0 0.4rem; color:var(--gold-soft); font-family:inherit; }
+.admin-note{ font-size:0.82rem; opacity:0.75; line-height:1.5; margin:0 0 1.2rem; }
+.admin-panel label{
+  display:block; font-size:0.8rem; opacity:0.85; margin-bottom:0.9rem;
+}
+.admin-panel input[type=text], .admin-panel textarea, .admin-panel select{
+  width:100%; margin-top:0.3rem; padding:0.55rem 0.7rem; border-radius:8px;
+  border:1px solid rgba(244,236,216,0.25); background:rgba(244,236,216,0.06);
+  color:var(--cream); font-family:inherit; font-size:0.9rem;
+}
+.admin-panel input[type=color]{ width:100%; height:34px; margin-top:0.3rem; border:none; border-radius:8px; background:none; }
+.admin-row{ display:grid; grid-template-columns:repeat(5,1fr); gap:0.5rem; }
+.admin-row label{ font-size:0.68rem; }
+.admin-actions{ display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:1rem; }
+.admin-actions button{
+  flex:1; padding:0.7rem 0.9rem; border-radius:8px; font-size:0.85rem;
+  background:var(--gold); color:#241a0c; font-weight:600;
+}
+#btnCloseAdmin{ background:rgba(244,236,216,0.1); color:var(--cream); }
+.admin-copied{ font-size:0.78rem; color:var(--gold-soft); margin-top:0.7rem; display:none; }
+.admin-copied.show{ display:block; }
  
-      <div class="principle">
-        <p class="principle__mark">HUMAN-FIRST<span>, NO IA-FIRST</span></p>
-        <p data-i18n="principle_desc">La IA acelera la detección y filtra el ruido. La decisión final, siempre, la toma una persona.</p>
-      </div>
- 
-      <p class="teaser"><a href="#certs-obtenidas" data-i18n="tz_cobertura">Siguiente: de la teoría al papel — ¿cuál ya está hecha? →</a></p>
-    </div>
-  </section>
- 
-  <!-- CERTIFICACIONES OBTENIDAS -->
-  <section class="section" id="certs-obtenidas">
-    <div class="wrap">
-      <p class="eyebrow" data-i18n="s_certs_label">// CERTIFICACIONES OBTENIDAS</p>
-      <h2 class="section__title" data-i18n="s_certs_title">Una ya está en el bolsillo. Verifícala.</h2>
-      <p class="lede" data-i18n="s_certs_lede">Certificaciones completadas y verificadas. No solo el papel — lo que aprendí con cada una.</p>
- 
-      <div class="cert-card">
-        <div class="cert-badge">
-          <div class="cert-badge__shield">🛡️</div>
-          <div class="cert-badge__id">CLLMSP</div>
-        </div>
-        <div>
-          <div class="cert-card__head">
-            <span class="cert-card__id">CLLMSP</span>
-            <span class="cert-card__issuer">RED TEAM LEADERS</span>
-            <span class="stamp stamp--closed" data-i18n="st_closed">CERRADO ✓</span>
-            <span class="cert-card__date" data-i18n="cert_date">Emitida: 16 jun 2026</span>
-          </div>
-          <h3 data-i18n="cert_title">Certified LLM Security Professional</h3>
-          <p class="cert-card__desc" data-i18n="cert_desc">Certificación vendor-neutral sobre seguridad de sistemas LLM en producción: desde la arquitectura del modelo hasta la respuesta ante incidentes. Cubre los 9 dominios de riesgo más críticos en entornos de IA desplegada.</p>
-          <div class="cert-domains">
-            <span class="cert-domain">LLM Fundamentals</span>
-            <span class="cert-domain">OWASP Top 10 LLMs</span>
-            <span class="cert-domain">Prompt Injection</span>
-            <span class="cert-domain">Jailbreak Security</span>
-            <span class="cert-domain">Governance &amp; Risk</span>
-            <span class="cert-domain">Data Privacy</span>
-            <span class="cert-domain">MCP Security</span>
-            <span class="cert-domain">AI Agents</span>
-            <span class="cert-domain">DevSecOps for AI</span>
-          </div>
-          <p class="cert-verify"><a href="https://courses.redteamleaders.com/exam-completion/c8e5c6b8df94f0b4" target="_blank" rel="noopener" data-i18n="cert_verify">Verificar certificación →</a></p>
-        </div>
-      </div>
- 
-      <p class="teaser"><a href="#roadmap" data-i18n="tz_certs">Siguiente: ¿y lo que viene después? →</a></p>
-    </div>
-  </section>
- 
-  <section class="section" id="roadmap">
-    <div class="wrap">
-      <p class="eyebrow" data-i18n="s_roadmap_label">// HOJA DE RUTA</p>
-      <h2 class="section__title" data-i18n="s_roadmap_title">Diez pasos, en orden</h2>
-      <p class="lede" data-i18n="s_roadmap_lede">No es una lista de deseos, es un plan: cada certificación construye sobre la anterior, de operar a arquitectar.</p>
- 
-      <div class="phase">
-        <div class="phase__head"><span class="phase__num">FASE 01</span><span class="phase__name" data-i18n="phase1">Operación y análisis</span><span class="stamp stamp--next" data-i18n="st_next">SIGUIENTE</span></div>
-        <div class="cert-list">
-          <div class="cert">
-            <p class="cert__id">BTL1</p>
-            <p class="cert__name">Security Blue Team — Level 1</p>
-            <p class="cert__desc" data-i18n="btl1_desc">Base 100% práctica para investigar incidentes reales desde el primer día.</p>
-          </div>
-          <div class="cert">
-            <p class="cert__id">SC-200</p>
-            <p class="cert__name">Microsoft Security Operations Analyst</p>
-            <p class="cert__desc" data-i18n="sc200_desc">Especialización en el stack de Microsoft: Sentinel y Defender.</p>
-          </div>
-          <div class="cert">
-            <p class="cert__id">CyberOps Associate</p>
-            <p class="cert__name">Cisco</p>
-            <p class="cert__desc" data-i18n="cyberops_desc">Fundamentos de red sólidos: entender por dónde viaja el tráfico que hay que proteger.</p>
-          </div>
-          <div class="cert">
-            <p class="cert__id">IR-200</p>
-            <p class="cert__name">Foundational Incident Response</p>
-            <p class="cert__desc" data-i18n="ir200_desc">Proceso estructurado de respuesta ante incidentes, de la detección al cierre.</p>
-          </div>
-        </div>
-      </div>
- 
-      <div class="phase">
-        <div class="phase__head"><span class="phase__num">FASE 02</span><span class="phase__name" data-i18n="phase2">Automatización y arquitectura</span><span class="stamp stamp--queue" data-i18n="st_queue">EN COLA</span></div>
-        <div class="cert-list">
-          <div class="cert">
-            <p class="cert__id">AZ-400</p>
-            <p class="cert__name">Azure DevOps Engineer Expert</p>
-            <p class="cert__desc" data-i18n="az400_desc">La pieza clave para integrar seguridad en el ciclo de vida del software (DevSecOps).</p>
-          </div>
-          <div class="cert">
-            <p class="cert__id">M365 Endpoint Admin</p>
-            <p class="cert__name">Microsoft 365 Certified — Administrador de Puntos de Conexión Asociado</p>
-            <p class="cert__desc" data-i18n="m365_desc">Aseguramiento de endpoints: el primer perímetro frente a un atacante.</p>
-          </div>
-        </div>
-      </div>
- 
-      <div class="phase">
-        <div class="phase__head"><span class="phase__num">FASE 03</span><span class="phase__name" data-i18n="phase3">Estrategia y nivel senior</span><span class="stamp stamp--queue" data-i18n="st_queue">EN COLA</span></div>
-        <div class="cert-list">
-          <div class="cert">
-            <p class="cert__id">ISO/IEC 27001:2022</p>
-            <p class="cert__name">ISMS Internal Auditor</p>
-            <p class="cert__desc" data-i18n="iso_desc">Entender qué exige realmente la normativa a una organización.</p>
-          </div>
-          <div class="cert">
-            <p class="cert__id">CCSP</p>
-            <p class="cert__name">Certified Cloud Security Professional</p>
-            <p class="cert__desc" data-i18n="ccsp_desc">El estándar de referencia en seguridad cloud.</p>
-          </div>
-          <div class="cert">
-            <p class="cert__id">CISSP</p>
-            <p class="cert__name">ISC2</p>
-            <p class="cert__desc" data-i18n="cissp_desc">La certificación más respetada para roles de arquitectura y gestión senior.</p>
-          </div>
-          <div class="cert">
-            <p class="cert__id">GCDA</p>
-            <p class="cert__name">GIAC Certified Detection Analyst</p>
-            <p class="cert__desc" data-i18n="gcda_desc">Especialización avanzada en detección de amenazas.</p>
-          </div>
-        </div>
-      </div>
- 
-      <p class="teaser"><a href="#proyectos" data-i18n="tz_roadmap">Siguiente: ¿y el código? →</a></p>
-    </div>
-  </section>
- 
-  <section class="section" id="proyectos">
-    <div class="wrap">
-      <p class="eyebrow" data-i18n="s_proyectos_label">// PROYECTOS</p>
-      <h2 class="section__title" data-i18n="s_proyectos_title">Código, no solo certificados</h2>
-      <div class="projects-grid">
-        <div class="project-card project-card--live">
-          <p class="project-card__tag project-card__tag--live" data-i18n="proj1_tag">// repositorio activo</p>
-          <h3>Rugby App Secure — Hardened Management Platform</h3>
-          <p data-i18n="proj1_desc">Ecosistema de gestión deportiva blindado bajo estándares de defensa en profundidad: microservicios aislados, autenticación de triple factor y mitigaciones activas contra vulnerabilidades web críticas.</p>
-          <a href="https://github.com/RepPabloSuarez-17/SEC-rugby-app" target="_blank" rel="noopener" data-i18n="proj_link">Ver en GitHub →</a>
-        </div>
-        <div class="project-card">
-          <p class="project-card__tag" data-i18n="proj_placeholder">// próximamente</p>
-          <h3 data-i18n="proj2_title">Detección de anomalías en logs con Python</h3>
-          <p data-i18n="proj2_desc">Script que analiza logs de eventos y marca patrones de acceso fuera de lo normal.</p>
-          <a href="#" data-i18n="proj_link">Ver en GitHub →</a>
-        </div>
-        <div class="project-card">
-          <p class="project-card__tag" data-i18n="proj_placeholder">// próximamente</p>
-          <h3 data-i18n="proj3_title">Pipeline DevSecOps en Azure</h3>
-          <p data-i18n="proj3_desc">CI/CD con análisis de seguridad integrado antes de cada despliegue.</p>
-          <a href="#" data-i18n="proj_link">Ver en GitHub →</a>
-        </div>
-      </div>
-      <p class="projects-note" data-i18n="projects_note">El primero ya es un repositorio real y funcional. Los otros dos son espacio reservado para los próximos proyectos.</p>
- 
-      <p class="teaser"><a href="#incidente" data-i18n="tz_proyectos">Siguiente: una noche cualquiera en el SOC… →</a></p>
-    </div>
-  </section>
- 
-  <!-- MOMENTO PICO: reproducción de un incidente (ficticio) -->
-  <section class="section" id="incidente">
-    <div class="wrap">
-      <p class="eyebrow" data-i18n="s_inc_label">// SIMULACIÓN</p>
-      <h2 class="section__title" data-i18n="s_inc_title">Una noche cualquiera en el SOC</h2>
-      <p class="lede" data-i18n="s_inc_lede">Ejemplo ilustrativo y ficticio de cómo leo un incidente: qué miro, en qué orden y dónde entra la decisión humana.</p>
- 
-      <div class="panel">
-        <div class="panel__bar"><span></span><span></span><span></span><small>incidente-0317.log</small></div>
-        <div class="log" role="log" aria-live="polite">
-          <p class="log__line"><span class="log__t">03:12:07</span> <span class="log__src">auth</span> <span class="lv lv--warn">WARN</span> 37 logins fallidos · svc-backup · 203.0.113.45</p>
-          <p class="log__line"><span class="log__t">03:12:41</span> <span class="log__src">auth</span> <span class="lv lv--alert">ALERT</span> login correcto · svc-backup · fuera de horario</p>
-          <p class="log__line"><span class="log__t">03:13:02</span> <span class="log__src">proc</span> <span class="lv lv--alert">ALERT</span> powershell.exe -enc … lanzado por svc-backup</p>
-          <p class="log__line"><span class="log__t">03:13:20</span> <span class="log__src">net&nbsp;</span> <span class="lv lv--alert">ALERT</span> conexión saliente sin historial · 198.51.100.7:443</p>
-          <p class="log__line"><span class="log__t">03:13:21</span> <span class="log__src">ia&nbsp;&nbsp;</span> <span class="lv lv--info">INFO</span> señales agrupadas: fuerza bruta → acceso → ejecución → salida</p>
-        </div>
-      </div>
- 
-      <div class="incident__bar">
-        <button type="button" class="btn btn--primary" id="playBtn" data-i18n="inc_play">▶ Reproducir incidente</button>
-        <p class="hint" data-i18n="inc_hint">Pulsa para ver cómo se encadena.</p>
-      </div>
- 
-      <div class="verdict" id="verdict">
-        <p class="verdict__title" data-i18n="v_title">// LECTURA</p>
-        <p class="verdict__body" data-i18n="v_body">Fuerza bruta contra una cuenta de servicio, acceso fuera de horario y ejecución cifrada. Cada señal por separado es ruido; juntas son un incidente.</p>
-        <div class="verdict__steps">
-          <div class="vstep"><p class="vstep__t" data-i18n="v1_t">01 Contener</p><p class="vstep__d" data-i18n="v1_d">Aislar el host y bloquear la cuenta.</p></div>
-          <div class="vstep"><p class="vstep__t" data-i18n="v2_t">02 Entender</p><p class="vstep__d" data-i18n="v2_d">Cronología completa y alcance real.</p></div>
-          <div class="vstep"><p class="vstep__t" data-i18n="v3_t">03 Cerrar</p><p class="vstep__d" data-i18n="v3_d">Rotar credenciales, MFA y una alerta nueva.</p></div>
-        </div>
-        <p class="verdict__human" data-i18n="v_human">La IA agrupó las señales. Aislar el host lo decide una persona.</p>
-      </div>
- 
-      <p class="teaser"><a href="#contacto" data-i18n="tz_incidente">Y si ocurre en tu empresa, hablemos →</a></p>
-    </div>
-  </section>
- 
-  <section class="section" id="contacto" style="border-bottom:none;">
-    <div class="wrap">
-      <p class="eyebrow" data-i18n="s_contacto_label">// CONTACTO</p>
-      <h2 class="section__title" data-i18n="s_contacto_title">Si has llegado hasta aquí, hablemos</h2>
-      <ul class="contact-list">
-        <li><span>Email</span><a href="mailto:pablosuarez0211@gmail.com">pablosuarez0211@gmail.com</a></li>
-        <li><span>GitHub</span><a href="https://github.com/RepPabloSuarez-17" target="_blank" rel="noopener">github.com/RepPabloSuarez-17</a></li>
-        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/pablo-suárez-0a1424221" target="_blank" rel="noopener">linkedin.com/in/pablo-suárez-0a1424221</a></li>
-        <li><span data-i18n="contact_location">Ubicación</span>Córdoba, España</li>
-      </ul>
-      <p class="contact-cta"><a class="btn btn--primary" href="mailto:pablosuarez0211@gmail.com" data-i18n="contact_cta">Escríbeme →</a></p>
-      <p class="closing" data-i18n="closing">Si algo se rompe, mejor que ya nos conozcamos.</p>
-    </div>
-  </section>
- 
-  <footer class="footer">
-    <div class="wrap">// Córdoba, España · <span data-i18n="footer_built">construido con HTML, CSS y JS</span> · 2026</div>
-  </footer>
+@media (prefers-reduced-motion: reduce){ .celebration-emoji{ animation:none; } }
+</style>
  
 <script>
-const translations = {
-  es: {
-    topbar_meta: "EXPEDIENTE · CÓRDOBA, ES",
-    nav_perfil: "Perfil",
-    nav_certs: "Certificaciones",
-    nav_roadmap: "Roadmap",
-    nav_proyectos: "Proyectos",
-    nav_contacto: "Contacto",
-    hero_eyebrow: "// PERFIL DE SEGURIDAD",
-    hero_role: "Analista de Ciberseguridad — Blue Team",
-    hero_desc: "<strong>Defender</strong> sistemas, <strong>automatizar</strong> lo aburrido y entender exactamente qué y cuando pasó lo que falló.",
-    hero_btn1: "Ver hoja de ruta →",
-    hero_btn2: "Hablemos",
-    p_location: "ubicación",
-    p_focus: "enfoque",
-    p_education: "formación",
-    p_next: "siguiente certificación",
-    p_status: "estado",
-    p_available: "Disponible para colaborar",
-    p_alert: "alerta",
-    p_alert_val: "1 evento sin clasificar — ver",
-    s_resumen_label: "// RESUMEN",
-    s_resumen_title: "Por qué defensa, y no otra cosa",
-    s_resumen_b1: "Empecé por las <strong>redes y los sistemas</strong>: quería entender cómo se construye algo antes de aprender a romperlo.",
-    s_resumen_b2: "SMR y ASIR pusieron la base. El Máster en Ciberseguridad fijó el rumbo: <strong>defender, no atacar</strong>.",
-    s_resumen_b3: "Hoy el foco: asegurar arquitecturas, <strong>cerrar las puertas antes de que alguien las encuentre</strong> e investigar a fondo cuando algo se cuela.",
-    s_resumen_b4: "La automatización no es un extra: es cómo se hace todo esto <strong>a escala</strong>.",
-    stat1_l: "certificación obtenida",
-    stat2_l: "en la hoja de ruta",
-    stat3_l: "dominios de riesgo LLM",
-    stat4_l: "repositorio activo",
-    tz_resumen: "Siguiente: ¿dónde exactamente pongo el foco? →",
-    s_areas_label: "// ÁREAS DE COBERTURA",
-    s_areas_title: "Cuatro frentes donde no se puede mirar a otro lado",
-    fc1_tag: "Arquitectura", fc1_title: "Resistir, no solo funcionar",
-    fc1_desc: "Construyo arquitecturas pensadas para que un atacante tenga que trabajar mucho más de lo que le compensa.",
-    fc2_tag: "Automatización", fc2_title: "Quitar lo repetitivo de en medio",
-    fc2_desc: "Automatizo todo lo que no necesita que una persona lo repita cada día — para que la seguridad no dependa de la memoria de nadie.",
-    fc3_tag: "Respuesta a incidentes", fc3_title: "Entender qué pasó, no solo que pasó",
-    fc3_desc: "Cuando algo se rompe, quiero saber qué pasó, cuándo y por dónde exactamente.",
-    fc4_tag: "IA aplicada", fc4_title: "Encontrar la aguja en el pajar",
-    fc4_desc: "Uso IA para detectar la anomalía antes de que se convierta en incidente, no para sustituir el criterio.",
-    focus_hint: "// toca una tarjeta para abrirla",
-    principle_desc: "La IA acelera la detección y filtra el ruido. La decisión final, siempre, la toma una persona.",
-    tz_cobertura: "Siguiente: de la teoría al papel — ¿cuál ya está hecha? →",
-    s_certs_label: "// CERTIFICACIONES OBTENIDAS",
-    s_certs_title: "Una ya está en el bolsillo. Verifícala.",
-    s_certs_lede: "Certificaciones completadas y verificadas. No solo el papel — lo que aprendí con cada una.",
-    st_closed: "CERRADO ✓",
-    cert_date: "Emitida: 16 jun 2026",
-    cert_title: "Certified LLM Security Professional",
-    cert_desc: "Certificación vendor-neutral sobre seguridad de sistemas LLM en producción: desde la arquitectura del modelo hasta la respuesta ante incidentes. Cubre los 9 dominios de riesgo más críticos en entornos de IA desplegada.",
-    cert_verify: "Verificar certificación →",
-    tz_certs: "Siguiente: ¿y lo que viene después? →",
-    s_roadmap_label: "// HOJA DE RUTA",
-    s_roadmap_title: "Diez pasos, en orden",
-    s_roadmap_lede: "No es una lista de deseos, es un plan: cada certificación construye sobre la anterior, de operar a arquitectar.",
-    phase1: "Operación y análisis", phase2: "Automatización y arquitectura", phase3: "Estrategia y nivel senior",
-    st_next: "SIGUIENTE", st_queue: "EN COLA",
-    btl1_desc: "Base 100% práctica para investigar incidentes reales desde el primer día.",
-    sc200_desc: "Especialización en el stack de Microsoft: Sentinel y Defender.",
-    cyberops_desc: "Fundamentos de red sólidos: entender por dónde viaja el tráfico que hay que proteger.",
-    ir200_desc: "Proceso estructurado de respuesta ante incidentes, de la detección al cierre.",
-    az400_desc: "La pieza clave para integrar seguridad en el ciclo de vida del software (DevSecOps).",
-    m365_desc: "Aseguramiento de endpoints: el primer perímetro frente a un atacante.",
-    iso_desc: "Entender qué exige realmente la normativa a una organización.",
-    ccsp_desc: "El estándar de referencia en seguridad cloud.",
-    cissp_desc: "La certificación más respetada para roles de arquitectura y gestión senior.",
-    gcda_desc: "Especialización avanzada en detección de amenazas.",
-    tz_roadmap: "Siguiente: ¿y el código? →",
-    s_proyectos_label: "// PROYECTOS",
-    s_proyectos_title: "Código, no solo certificados",
-    proj1_tag: "// repositorio activo", proj_placeholder: "// próximamente",
-    proj1_desc: "Ecosistema de gestión deportiva blindado bajo estándares de defensa en profundidad: microservicios aislados, autenticación de triple factor y mitigaciones activas contra vulnerabilidades web críticas.",
-    proj2_title: "Detección de anomalías en logs con Python",
-    proj2_desc: "Script que analiza logs de eventos y marca patrones de acceso fuera de lo normal.",
-    proj3_title: "Pipeline DevSecOps en Azure",
-    proj3_desc: "CI/CD con análisis de seguridad integrado antes de cada despliegue.",
-    proj_link: "Ver en GitHub →",
-    projects_note: "El primero ya es un repositorio real y funcional. Los otros dos son espacio reservado para los próximos proyectos.",
-    tz_proyectos: "Siguiente: una noche cualquiera en el SOC… →",
-    s_inc_label: "// SIMULACIÓN",
-    s_inc_title: "Una noche cualquiera en el SOC",
-    s_inc_lede: "Ejemplo ilustrativo y ficticio de cómo leo un incidente: qué miro, en qué orden y dónde entra la decisión humana.",
-    inc_play: "▶ Reproducir incidente",
-    inc_playing: "Reproduciendo…",
-    inc_replay: "↺ Reproducir de nuevo",
-    inc_hint: "Pulsa para ver cómo se encadena.",
-    v_title: "// LECTURA",
-    v_body: "Fuerza bruta contra una cuenta de servicio, acceso fuera de horario y ejecución cifrada. Cada señal por separado es ruido; juntas son un incidente.",
-    v1_t: "01 Contener", v1_d: "Aislar el host y bloquear la cuenta.",
-    v2_t: "02 Entender", v2_d: "Cronología completa y alcance real.",
-    v3_t: "03 Cerrar", v3_d: "Rotar credenciales, MFA y una alerta nueva.",
-    v_human: "La IA agrupó las señales. Aislar el host lo decide una persona.",
-    tz_incidente: "Y si ocurre en tu empresa, hablemos →",
-    s_contacto_label: "// CONTACTO",
-    s_contacto_title: "Si has llegado hasta aquí, hablemos",
-    contact_location: "Ubicación",
-    contact_cta: "Escríbeme →",
-    closing: "Si algo se rompe, mejor que ya nos conozcamos.",
-    footer_built: "construido con HTML, CSS y JS"
+/* ============================================================
+   CONTENIDO — esto es lo único que necesitas tocar para cada
+   ocasión si editas el archivo a mano. También se puede editar
+   desde el panel secreto (botón invisible + código).
+   ============================================================ */
+const CONTENT = {
+
+  "eyebrow": "Para ti",
+
+  "question": "¿Te apetece hacer algo, no se el que :) ?",
+
+  "subtitle": "Todavía no sé exactamente qué vamos a hacer, pero sé que quiero hacerlo contigo. Tú solo di que sí.",
+
+  "details": "Cuando tú quieras · el sitio lo elijimos los dos · trae ganas de reírte",
+
+  "celebrationTitle": "Sabía que dirías que sí",
+
+  "celebrationText": "Ahora solo queda esperar el día. Te aviso con tiempo, prepárate.",
+
+  "theme": {
+
+    "bgDeep": "#14182b",
+
+    "bgMid": "#1c2340",
+
+    "gold": "#d8a85c",
+
+    "goldSoft": "#e9c98b",
+
+    "cream": "#f4ecd8"
+
   },
-  en: {
-    topbar_meta: "FILE · CÓRDOBA, ES",
-    nav_perfil: "Profile",
-    nav_certs: "Certifications",
-    nav_roadmap: "Roadmap",
-    nav_proyectos: "Projects",
-    nav_contacto: "Contact",
-    hero_eyebrow: "// SECURITY PROFILE",
-    hero_role: "Cybersecurity Analyst — Blue Team",
-    hero_desc: "<strong>Defending</strong> systems, <strong>automating</strong> the boring parts, and understanding exactly what failed and when.",
-    hero_btn1: "View roadmap →",
-    hero_btn2: "Get in touch",
-    p_location: "location",
-    p_focus: "focus",
-    p_education: "education",
-    p_next: "next certification",
-    p_status: "status",
-    p_available: "Available for collaboration",
-    p_alert: "alert",
-    p_alert_val: "1 unclassified event — view",
-    s_resumen_label: "// ABOUT",
-    s_resumen_title: "Why defense, not offense",
-    s_resumen_b1: "I started with <strong>networks and systems</strong>: I wanted to understand how things are built before learning how they break.",
-    s_resumen_b2: "SMR and ASIR laid the foundation. The Master's in Cybersecurity set the direction: <strong>defend, not attack</strong>.",
-    s_resumen_b3: "Today the focus is securing architectures, <strong>closing doors before anyone finds them</strong>, and investigating thoroughly when something slips through.",
-    s_resumen_b4: "Automation is not an extra: it is how all of this gets done <strong>at scale</strong>.",
-    stat1_l: "certification earned",
-    stat2_l: "on the roadmap",
-    stat3_l: "LLM risk domains",
-    stat4_l: "active repository",
-    tz_resumen: "Next: where exactly do I focus? →",
-    s_areas_label: "// COVERAGE AREAS",
-    s_areas_title: "Four fronts where you can't look away",
-    fc1_tag: "Architecture", fc1_title: "Built to resist, not just to run",
-    fc1_desc: "I design architectures that make attackers work far harder than it is worth.",
-    fc2_tag: "Automation", fc2_title: "Remove the repetitive",
-    fc2_desc: "I automate everything that does not need a person behind it every day — so security does not depend on anyone's memory.",
-    fc3_tag: "Incident response", fc3_title: "Know what happened, not just that it did",
-    fc3_desc: "When something breaks, I want to know what happened, when, and exactly how.",
-    fc4_tag: "Applied AI", fc4_title: "Finding the needle in the haystack",
-    fc4_desc: "I use AI to catch anomalies before they become incidents, not to replace judgment.",
-    focus_hint: "// tap a card to open it",
-    principle_desc: "AI speeds up detection and filters noise. The final call, always, is made by a person.",
-    tz_cobertura: "Next: from theory to paper — which one is already done? →",
-    s_certs_label: "// EARNED CERTIFICATIONS",
-    s_certs_title: "One is already earned. Verify it.",
-    s_certs_lede: "Completed and verified certifications. Not just the paper — what I actually learned.",
-    st_closed: "CLOSED ✓",
-    cert_date: "Issued: Jun 16, 2026",
-    cert_title: "Certified LLM Security Professional",
-    cert_desc: "Vendor-neutral certification on securing LLM systems in production: from model architecture to incident response. Covers the 9 most critical risk domains in deployed AI environments.",
-    cert_verify: "Verify certification →",
-    tz_certs: "Next: and what comes after? →",
-    s_roadmap_label: "// ROADMAP",
-    s_roadmap_title: "Ten steps, in order",
-    s_roadmap_lede: "Not a wish list — a plan. Each certification builds on the previous one, from operating to architecting.",
-    phase1: "Operation & analysis", phase2: "Automation & architecture", phase3: "Strategy & senior level",
-    st_next: "NEXT", st_queue: "QUEUED",
-    btl1_desc: "100% practical foundation for investigating real incidents from day one.",
-    sc200_desc: "Specialization in the Microsoft security stack: Sentinel and Defender.",
-    cyberops_desc: "Solid network fundamentals: understanding where the traffic you need to protect actually travels.",
-    ir200_desc: "Structured incident response process, from detection to closure.",
-    az400_desc: "The key piece for integrating security into the software lifecycle (DevSecOps).",
-    m365_desc: "Endpoint hardening: the first perimeter against an attacker.",
-    iso_desc: "Understanding what compliance actually demands from an organization.",
-    ccsp_desc: "The gold standard for cloud security.",
-    cissp_desc: "The most respected certification for architecture and senior management roles.",
-    gcda_desc: "Advanced specialization in threat detection.",
-    tz_roadmap: "Next: and the code? →",
-    s_proyectos_label: "// PROJECTS",
-    s_proyectos_title: "Code, not just certs",
-    proj1_tag: "// active repository", proj_placeholder: "// coming soon",
-    proj1_desc: "Sports management ecosystem hardened under defense-in-depth standards: isolated microservices, triple-factor authentication, and active mitigations against critical web vulnerabilities.",
-    proj2_title: "Log anomaly detection with Python",
-    proj2_desc: "Script that analyzes event logs and flags unusual access patterns.",
-    proj3_title: "DevSecOps pipeline on Azure",
-    proj3_desc: "CI/CD with integrated security analysis before every deployment.",
-    proj_link: "View on GitHub →",
-    projects_note: "The first one is a real, working repository. The other two are placeholders for upcoming projects.",
-    tz_proyectos: "Next: an ordinary night in the SOC… →",
-    s_inc_label: "// SIMULATION",
-    s_inc_title: "An ordinary night in the SOC",
-    s_inc_lede: "An illustrative, fictional example of how I read an incident: what I look at, in what order, and where the human decision comes in.",
-    inc_play: "▶ Play incident",
-    inc_playing: "Playing…",
-    inc_replay: "↺ Play again",
-    inc_hint: "Press to see how it chains together.",
-    v_title: "// READING",
-    v_body: "Brute force against a service account, off-hours access and encoded execution. Each signal alone is noise; together they are an incident.",
-    v1_t: "01 Contain", v1_d: "Isolate the host and lock the account.",
-    v2_t: "02 Understand", v2_d: "Full timeline and real scope.",
-    v3_t: "03 Close", v3_d: "Rotate credentials, enforce MFA and add a new alert.",
-    v_human: "AI grouped the signals. Isolating the host is a person's call.",
-    tz_incidente: "And if it happens at your company, let's talk →",
-    s_contacto_label: "// CONTACT",
-    s_contacto_title: "If you made it this far, let's talk",
-    contact_location: "Location",
-    contact_cta: "Write to me →",
-    closing: "If something breaks, better that we already know each other.",
-    footer_built: "built with HTML, CSS and JS"
+
+  "music": {
+
+    "type": "youtube",
+
+    "youtubeId": "A_olVElDSWI",
+
+    "mp3Url": ""
+
   }
+
 };
  
-let currentLang = 'es';
-let hasPlayed = false;
-let playing = false;
-let timers = [];
+/* Código para entrar al modo edición. Cámbialo por el que quieras. */
+const ADMIN_CODE = "estrella";
  
-const playBtn = document.getElementById('playBtn');
-const verdict = document.getElementById('verdict');
-const logLines = Array.from(document.querySelectorAll('.log__line'));
-const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
- 
-function tr(key) { return translations[currentLang][key]; }
- 
-function setPlayLabel() {
-  playBtn.textContent = tr(playing ? 'inc_playing' : (hasPlayed ? 'inc_replay' : 'inc_play'));
+/* ============================================================
+   Render de contenido + tema
+   ============================================================ */
+function applyContent(c){
+  document.getElementById('eyebrow').textContent = c.eyebrow;
+  document.getElementById('question').textContent = c.question;
+  document.getElementById('subtitle').textContent = c.subtitle;
+  document.getElementById('detail-line').textContent = c.details;
+  document.getElementById('celebrationTitle').textContent = c.celebrationTitle;
+  document.getElementById('celebrationText').textContent = c.celebrationText;
+  const root = document.documentElement.style;
+  root.setProperty('--bg-deep', c.theme.bgDeep);
+  root.setProperty('--bg-mid', c.theme.bgMid);
+  root.setProperty('--gold', c.theme.gold);
+  root.setProperty('--gold-soft', c.theme.goldSoft);
+  root.setProperty('--cream', c.theme.cream);
 }
+applyContent(CONTENT);
  
-function applyLang(lang) {
-  const t = translations[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.getAttribute('data-i18n-html');
-    if (t[key] !== undefined) el.innerHTML = t[key];
-  });
-  document.documentElement.lang = lang;
-  const other = lang === 'es' ? 'EN' : 'ES';
-  document.getElementById('langCode1').textContent = other;
-  document.getElementById('langCode2').textContent = other;
-  setPlayLabel();
+/* ============================================================
+   Botón "No" — imposible de pulsar, encoge cada vez
+   ============================================================ */
+const btnNo = document.getElementById('btnNo');
+const btnYes = document.getElementById('btnYes');
+const answers = document.querySelector('.answers');
+const celebration = document.getElementById('celebration');
+ 
+let noScale = 1;
+const NO_SHRINK_FACTOR = 0.82;
+const NO_MIN_SCALE = 0.32;
+ 
+function dodge(){
+  const areaW = answers.clientWidth;
+  const areaH = answers.clientHeight;
+  const btnW = btnNo.offsetWidth;
+  const btnH = btnNo.offsetHeight;
+  const maxX = Math.max(areaW - btnW, 0);
+  const maxY = Math.max(areaH - btnH, 0);
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY - (maxY/2);
+  noScale = Math.max(noScale * NO_SHRINK_FACTOR, NO_MIN_SCALE);
+  btnNo.style.position = 'absolute';
+  btnNo.style.left = x + 'px';
+  btnNo.style.top = y + 'px';
+  btnNo.style.transform = `scale(${noScale})`;
 }
+btnNo.addEventListener('mouseenter', dodge);
+btnNo.addEventListener('touchstart', (e)=>{ e.preventDefault(); dodge(); }, {passive:false});
+btnNo.addEventListener('click', (e)=>{ e.preventDefault(); dodge(); });
  
-document.getElementById('langBtn').addEventListener('click', () => {
-  currentLang = currentLang === 'es' ? 'en' : 'es';
-  applyLang(currentLang);
+btnYes.addEventListener('click', ()=>{
+  celebration.classList.add('show');
+  playMusic();
 });
  
-/* Reproducción del incidente (momento pico) */
-function resetLog() {
-  timers.forEach(clearTimeout);
-  timers = [];
-  logLines.forEach((l, i) => l.classList.toggle('is-on', i === 0));
-  verdict.classList.remove('is-on');
-}
+/* ============================================================
+   Música — YouTube oculto o mp3 directo, según CONTENT.music.type
+   ============================================================ */
+const musicBtn = document.getElementById('musicToggle');
+let ytPlayer = null;
+let ytReady = false;
+let audioEl = null;
  
-function playIncident() {
-  resetLog();
-  playing = true;
-  playBtn.disabled = true;
-  setPlayLabel();
-  const step = reduceMotion ? 0 : 700;
-  logLines.slice(1).forEach((line, i) => {
-    timers.push(setTimeout(() => line.classList.add('is-on'), step * (i + 1)));
+function setupMusic(){
+  const m = CONTENT.music;
+  if(m.type === 'mp3' && m.mp3Url){
+    audioEl = new Audio(m.mp3Url);
+    audioEl.loop = true;
+  }
+  if(m.type === 'youtube' && m.youtubeId){
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+    window.onYouTubeIframeAPIReady = function(){
+      ytPlayer = new YT.Player('yt-player', {
+        videoId: m.youtubeId,
+        playerVars: { autoplay: 0, controls: 0, loop: 1, playlist: m.youtubeId },
+        events: { onReady: ()=>{ ytReady = true; } }
+      });
+    };
+  }
+}
+setupMusic();
+ 
+function isPlaying(){
+  if(CONTENT.music.type === 'mp3' && audioEl) return !audioEl.paused;
+  if(CONTENT.music.type === 'youtube' && ytReady) return ytPlayer.getPlayerState() === 1;
+  return false;
+}
+function playMusic(){
+  if(CONTENT.music.type === 'mp3' && audioEl){
+    audioEl.play().catch(()=>{});
+    musicBtn.classList.add('playing');
+  } else if(CONTENT.music.type === 'youtube' && ytReady){
+    ytPlayer.playVideo();
+    musicBtn.classList.add('playing');
+  }
+}
+function pauseMusic(){
+  if(CONTENT.music.type === 'mp3' && audioEl) audioEl.pause();
+  if(CONTENT.music.type === 'youtube' && ytReady) ytPlayer.pauseVideo();
+  musicBtn.classList.remove('playing');
+}
+musicBtn.addEventListener('click', ()=>{
+  if(CONTENT.music.type === 'none') return;
+  isPlaying() ? pauseMusic() : playMusic();
+});
+ 
+/* ============================================================
+   Fondo de estrellas
+   ============================================================ */
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
+let stars = [];
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const count = Math.floor((canvas.width * canvas.height) / 9000);
+  stars = Array.from({length: count}, ()=>({
+    x: Math.random()*canvas.width, y: Math.random()*canvas.height,
+    r: Math.random()*1.3 + 0.2, a: Math.random()*0.6 + 0.2, speed: Math.random()*0.015 + 0.003
+  }));
+}
+window.addEventListener('resize', resize);
+resize();
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle = '#f4ecd8';
+  stars.forEach(s=>{
+    s.a += s.speed;
+    const alpha = (Math.sin(s.a) + 1) / 2 * 0.6 + 0.15;
+    ctx.globalAlpha = alpha;
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    ctx.fill();
   });
-  timers.push(setTimeout(() => {
-    verdict.classList.add('is-on');
-    playing = false;
-    hasPlayed = true;
-    playBtn.disabled = false;
-    setPlayLabel();
-  }, step * logLines.length + (reduceMotion ? 0 : 500)));
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(draw);
+}
+draw();
+ 
+/* ============================================================
+   Panel secreto de edición
+   ============================================================ */
+const adminOverlay = document.getElementById('adminOverlay');
+const secretTrigger = document.getElementById('secretTrigger');
+ 
+secretTrigger.addEventListener('click', ()=>{
+  const code = prompt('Código:');
+  if(code === ADMIN_CODE){
+    fillAdminForm();
+    adminOverlay.classList.add('show');
+  }
+});
+document.getElementById('btnCloseAdmin').addEventListener('click', ()=>{
+  adminOverlay.classList.remove('show');
+});
+ 
+function fillAdminForm(){
+  document.getElementById('f_eyebrow').value = CONTENT.eyebrow;
+  document.getElementById('f_question').value = CONTENT.question;
+  document.getElementById('f_subtitle').value = CONTENT.subtitle;
+  document.getElementById('f_details').value = CONTENT.details;
+  document.getElementById('f_celTitle').value = CONTENT.celebrationTitle;
+  document.getElementById('f_celText').value = CONTENT.celebrationText;
+  document.getElementById('f_bgDeep').value = CONTENT.theme.bgDeep;
+  document.getElementById('f_bgMid').value = CONTENT.theme.bgMid;
+  document.getElementById('f_gold').value = CONTENT.theme.gold;
+  document.getElementById('f_goldSoft').value = CONTENT.theme.goldSoft;
+  document.getElementById('f_cream').value = CONTENT.theme.cream;
+  document.getElementById('f_musicType').value = CONTENT.music.type;
+  document.getElementById('f_youtubeId').value = CONTENT.music.youtubeId;
+  document.getElementById('f_mp3Url').value = CONTENT.music.mp3Url;
+  toggleMusicFields();
 }
  
-playBtn.addEventListener('click', playIncident);
-resetLog();
+function toggleMusicFields(){
+  const type = document.getElementById('f_musicType').value;
+  document.getElementById('wrap_youtubeId').style.display = type === 'youtube' ? 'block' : 'none';
+  document.getElementById('wrap_mp3Url').style.display = type === 'mp3' ? 'block' : 'none';
+}
+document.getElementById('f_musicType').addEventListener('change', toggleMusicFields);
+ 
+function readAdminForm(){
+  return {
+    eyebrow: document.getElementById('f_eyebrow').value,
+    question: document.getElementById('f_question').value,
+    subtitle: document.getElementById('f_subtitle').value,
+    details: document.getElementById('f_details').value,
+    celebrationTitle: document.getElementById('f_celTitle').value,
+    celebrationText: document.getElementById('f_celText').value,
+    theme: {
+      bgDeep: document.getElementById('f_bgDeep').value,
+      bgMid: document.getElementById('f_bgMid').value,
+      gold: document.getElementById('f_gold').value,
+      goldSoft: document.getElementById('f_goldSoft').value,
+      cream: document.getElementById('f_cream').value
+    },
+    music: {
+      type: document.getElementById('f_musicType').value,
+      youtubeId: document.getElementById('f_youtubeId').value,
+      mp3Url: document.getElementById('f_mp3Url').value
+    }
+  };
+}
+ 
+document.getElementById('btnPreview').addEventListener('click', ()=>{
+  Object.assign(CONTENT, readAdminForm());
+  applyContent(CONTENT);
+});
+ 
+document.getElementById('btnCopy').addEventListener('click', ()=>{
+  Object.assign(CONTENT, readAdminForm());
+  const text = "const CONTENT = " + JSON.stringify(CONTENT, null, 2) + ";";
+  navigator.clipboard.writeText(text).then(()=>{
+    const msg = document.getElementById('copiedMsg');
+    msg.classList.add('show');
+    setTimeout(()=> msg.classList.remove('show'), 3500);
+  });
+});
 </script>
 </body>
 </html>
- 
